@@ -1,1 +1,1 @@
-# production_project
+# React + TS + Webpack sample project
