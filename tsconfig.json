@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    // Не позволяет создавать переменные без указания типов
+    "noImplicitAny": true,
+    "module": "ESNext",
+    "target": "es5",
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "checkJs": true,
+    "moduleResolution": "node",
+    // Для абсолютного импорта
+    // "baseUrl": ".",
+    // esModuleInterop позволяет работать с пакетами, которые используют commonJS
+    // как будто они в обычном js -> import package from 'package';
+    "esModuleInterop": true,
+    // Если какая-либо библиотека не имеет default import
+    // лоадеры вроде ts-loader или babel-loader автоматически создают их
+    // вместо такого импорта
+    // import * as React from 'react';
+    // можно писать такой
+    // import React from 'react';
+    "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
