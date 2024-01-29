@@ -10,7 +10,12 @@
     "checkJs": true,
     "moduleResolution": "node",
     // Для абсолютного импорта
-    // "baseUrl": ".",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "./src/*"
+      ]
+    },
     // esModuleInterop позволяет работать с пакетами, которые используют commonJS
     // как будто они в обычном js -> import package from 'package';
     "esModuleInterop": true,

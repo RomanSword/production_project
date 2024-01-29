@@ -1,13 +1,13 @@
 import { Suspense } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 
-import { Spinner } from './components';
+import { Spinner } from 'shared/components';
+import { classNames } from 'shared/lib/classNames';
 
-import { AboutPageAsync } from './pages/About/AboutPage.async';
-import { MainPageAsync } from './pages/Main/MainPage.async';
+import { useTheme } from 'app/providers/ThemeProvider';
 
-import { useTheme } from './theme/useTheme';
-import { classNames } from './helpers/classNames';
+import { AboutPage } from 'pages/About';
+import { MainPage } from 'pages/Main';
 
 import './styles/index.scss';
 
@@ -23,8 +23,8 @@ const App = () => {
 
             <Suspense fallback={<Spinner />}>
                 <Routes>
-                    <Route path='/about' element={<AboutPageAsync />} />
-                    <Route path='/' element={<MainPageAsync />} />
+                    <Route path='/about' element={<AboutPage />} />
+                    <Route path='/' element={<MainPage />} />
                 </Routes>
             </Suspense>
         </div>
