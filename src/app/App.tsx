@@ -4,10 +4,10 @@ import { Route, Routes, Link } from 'react-router-dom';
 import { Spinner } from 'shared/components';
 import { classNames } from 'shared/lib/classNames';
 
-import { useTheme } from 'app/providers/ThemeProvider';
+import { useTheme } from 'app/providers/themeProvider';
 
-import { AboutPage } from 'pages/About';
-import { MainPage } from 'pages/Main';
+import { AboutPage } from 'pages/about';
+import { MainPage } from 'pages/main';
 
 import './styles/index.scss';
 

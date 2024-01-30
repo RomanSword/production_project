@@ -1,4 +1,4 @@
-import Spinner from './spinner/Spinner';
+import Spinner from './spinner/spinner';
 
 export {
     Spinner
