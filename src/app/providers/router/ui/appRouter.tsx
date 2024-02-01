@@ -1,8 +1,7 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Spinner } from 'shared/components';
-
+import { Spinner } from 'shared/ui';
 import { routeConfig } from 'shared/config/routeConfig';
 
 const AppRouter = () => {
