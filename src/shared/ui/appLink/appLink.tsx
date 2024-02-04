@@ -1,6 +1,6 @@
 import { NavLink, LinkProps } from 'react-router-dom';
 
-import { FCCP } from 'app/types';
+import { FCCP } from 'app/types/declarations';
 import { classNames } from 'shared/lib/classNames';
 
 import cls from './appLink.module.scss';
@@ -25,7 +25,7 @@ export const AppLink: FCCP<AppLinkProps> = ({
     return (
         <NavLink
             to={to}
-            className={classNames(cls.appLink, {}, [className, cls[theme]])}
+            className={classNames([cls.appLink, className, cls[theme]])}
             {...otherProps}
         >
             {children}

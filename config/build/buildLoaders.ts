@@ -4,6 +4,16 @@ import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
+    const imageLoader = {
+        test: /\.(png|jpe?g)$/i,
+        use: [{ loader: 'file-loader' }]
+    };
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack']
+    };
+
     // Если не используем ts, то тут понадобится babel-loader
     const tsLoader = {
         test: /\.tsx?$/,
@@ -37,6 +47,8 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     };
 
     return [
+        imageLoader,
+        svgLoader,
         tsLoader,
         cssLoader
     ];

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { FCC } from 'app/types';
+import { FCC } from 'app/types/declarations';
 
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/themeContext';
 
