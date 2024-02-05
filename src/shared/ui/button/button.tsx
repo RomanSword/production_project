@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 
 import { FCCP } from 'app/types/declarations';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib';
 
 import cls from './button.module.scss';
 

@@ -10,5 +10,5 @@ export function classNames(
         }
 
         return sum;
-    }, '');
+    }, '').trim();
 };

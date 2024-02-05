@@ -1,7 +1,7 @@
 import { NavLink, LinkProps } from 'react-router-dom';
 
 import { FCCP } from 'app/types/declarations';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib';
 
 import cls from './appLink.module.scss';
 

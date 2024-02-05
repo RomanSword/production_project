@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib';
 
 import { useTheme } from 'app/providers/themeProvider';
 import { AppRouter } from 'app/providers/router';
-import { NavBar } from 'widgets/NavBar';
+import { NavBar, SideBar } from 'widgets';
 
 import './styles/index.scss';
 
@@ -12,7 +12,11 @@ const App = () => {
     return (
         <div className={classNames(['app', theme])}>
             <NavBar />
-            <AppRouter />
+
+            <div className='content-wrapper'>
+                <SideBar />
+                <AppRouter />
+            </div>
         </div>
     );
 }
