@@ -1,4 +1,4 @@
-import AppRouter from './ui/appRouter';
+import AppRouter from './appRouter';
 
 export {
     AppRouter

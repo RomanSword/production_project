@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Button } from 'shared/ui';
 import { classNames } from 'shared/lib';
-import { ThemeSwitcher } from 'widgets/themeSwitcher';
+import { LanguageSwitcher, ThemeSwitcher } from 'widgets';
 
 import cls from './sideBar.module.scss';
 
@@ -29,7 +29,7 @@ export const SideBar = ({
             <Button onClick={onClickTest}>Toggle</Button>
 
             <div className={cls.switchers}>
-                {/* <LanguageSwitcher /> */}
+                <LanguageSwitcher />
                 <ThemeSwitcher />
             </div>
         </div>
