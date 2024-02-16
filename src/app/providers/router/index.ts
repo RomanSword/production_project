@@ -1,5 +1,3 @@
 import AppRouter from './appRouter';
 
-export {
-    AppRouter
-}
+export { AppRouter };

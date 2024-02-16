@@ -22,7 +22,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
         resolve: buildResolvers(options),
         module: {
             rules: buildLoaders(options)
-        },
+        }
     };
 
     if (isDev) {

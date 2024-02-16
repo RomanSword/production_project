@@ -13,16 +13,16 @@ const App = () => {
 
     return (
         <div className={classNames(['app', theme])}>
-            <Suspense fallback=''>
+            <Suspense fallback="">
                 <NavBar />
 
-                <div className='content-wrapper'>
+                <div className="content-wrapper">
                     <SideBar />
                     <AppRouter />
                 </div>
             </Suspense>
         </div>
     );
-}
+};
 
 export default App;

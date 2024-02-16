@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactElement } from 'react';
 
 import { FCCP } from 'app/types/declarations';
 import { classNames } from 'shared/lib';
@@ -19,7 +19,7 @@ export const Button: FCCP<ButtonProps> = ({
     theme,
     children,
     ...otherProps
-}) => {
+}): ReactElement => {
     return (
         <button
             {...otherProps}
@@ -28,4 +28,4 @@ export const Button: FCCP<ButtonProps> = ({
             {children}
         </button>
     );
-}
+};

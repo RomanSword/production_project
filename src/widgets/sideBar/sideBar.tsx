@@ -10,9 +10,7 @@ interface SideBarProps {
     className?: string;
 }
 
-export const SideBar = ({
-    className
-}: SideBarProps) => {
+export const SideBar = ({ className }: SideBarProps) => {
     const [collapsed, setCollapsed] = useState(false);
 
     const onClickTest = (): void => {
@@ -20,12 +18,7 @@ export const SideBar = ({
     };
 
     return (
-        <div
-            className={classNames([
-                cls.sideBar, className,
-                collapsed && cls.collapsed
-            ])}
-        >
+        <div className={classNames([cls.sideBar, className, collapsed && cls.collapsed])}>
             <Button onClick={onClickTest}>Toggle</Button>
 
             <div className={cls.switchers}>
@@ -34,4 +27,4 @@ export const SideBar = ({
             </div>
         </div>
     );
-}
+};

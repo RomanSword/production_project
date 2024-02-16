@@ -8,24 +8,18 @@ const AppRouter = () => {
     return (
         <Suspense fallback={<Spinner />}>
             <Routes>
-                {
-                    Object.values(RouteConfig).map(({ element, path }) => {
-                        return (
-                            <Route
-                                key={path}
-                                path={path}
-                                element={
-                                    <div className='content'>
-                                        {element}
-                                    </div>
-                                }
-                            />
-                        );
-                    })
-                }
+                {Object.values(RouteConfig).map(({ element, path }) => {
+                    return (
+                        <Route
+                            key={path}
+                            path={path}
+                            element={<div className="content">{element}</div>}
+                        />
+                    );
+                })}
             </Routes>
         </Suspense>
     );
-}
+};
 
 export default AppRouter;

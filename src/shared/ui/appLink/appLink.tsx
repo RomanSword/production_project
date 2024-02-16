@@ -31,4 +31,4 @@ export const AppLink: FCCP<AppLinkProps> = ({
             {children}
         </NavLink>
     );
-}
+};

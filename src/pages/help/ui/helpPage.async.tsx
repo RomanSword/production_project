@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 
-export const HelpPageAsync = lazy(() => new Promise(resolve => {
-    // @ts-ignore
-    setTimeout(() => resolve(import('./helpPage')), 2000);
-}));
+export const HelpPageAsync = lazy(async () => {
+    return await import('./helpPage');
+});

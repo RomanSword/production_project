@@ -1,3 +1,1 @@
-export {
-    HelpPageAsync as HelpPage
-} from './ui/helpPage.async';
+export { HelpPageAsync as HelpPage } from './ui/helpPage.async';
