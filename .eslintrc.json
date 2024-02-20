@@ -9,5 +9,11 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint"]
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "indent": [2, 4],
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "warn"
+    }
 }

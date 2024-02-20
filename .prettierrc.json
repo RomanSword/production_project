@@ -3,9 +3,11 @@
     "arrowParens": "avoid",
     "semi": true,
     "tabWidth": 4,
-    "singleQuote": true,
     "bracketSpacing": true,
     "bracketSameLine": false,
     "singleAttributePerLine": true,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "parser": "typescript"
 }

@@ -13,7 +13,7 @@ const AppRouter = () => {
                         <Route
                             key={path}
                             path={path}
-                            element={<div className="content">{element}</div>}
+                            element={<div className='content'>{element}</div>}
                         />
                     );
                 })}

@@ -23,6 +23,7 @@ export const Button: FCCP<ButtonProps> = ({
     return (
         <button
             {...otherProps}
+            type='button'
             className={classNames([cls.button, cls[theme], className])}
         >
             {children}
