@@ -10,7 +10,9 @@
     "build:dev": "webpack --env mode=development",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
-    "prettier:fix": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
+    "prettier:fix": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "stylelint": "npx stylelint \"**/*.scss\"",
+    "stylelint:fix": "npx stylelint \"**/*.scss\" --fix"
   },
   "husky": {
     "hooks": {
@@ -39,6 +41,7 @@
     "css-loader": "6.8.1",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-i18next": "^6.0.3",
     "eslint-plugin-react": "^7.33.2",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.5.4",
@@ -49,6 +52,8 @@
     "sass": "1.69.5",
     "sass-loader": "13.3.2",
     "style-loader": "3.3.3",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard-scss": "^13.0.0",
     "ts-loader": "9.5.1",
     "typescript": "5.3.3",
     "webpack": "5.89.0",
