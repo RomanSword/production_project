@@ -1,3 +1,3 @@
-import { classNames } from './classNames';
+import { classNames } from './classNames/classNames';
 
 export { classNames };
