@@ -1,12 +1,12 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Spinner } from 'shared/ui';
 import { RouteConfig } from 'shared/config';
+import { PageLoader } from 'widgets/pageLoader/pageLoader';
 
 const AppRouter = () => {
     return (
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<PageLoader />}>
             <Routes>
                 {Object.values(RouteConfig).map(({ element, path }) => {
                     return (
