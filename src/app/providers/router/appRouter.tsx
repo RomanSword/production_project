@@ -1,10 +1,10 @@
-import { Suspense } from 'react';
+import { ReactElement, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { RouteConfig } from 'shared/config';
 import { PageLoader } from 'widgets/pageLoader/pageLoader';
 
-const AppRouter = () => {
+const AppRouter = (): ReactElement => {
     return (
         <Suspense fallback={<PageLoader />}>
             <Routes>

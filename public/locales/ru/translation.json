@@ -1,6 +1,9 @@
 {
-    "switcher.language": "Ru",
-    "link.main": "Главная",
-    "link.help": "Помощь",
-    "not_found": "Страница не найдена"
+  "switcher.language": "Ru",
+  "link.main": "Главная",
+  "link.help": "Помощь",
+  "not_found": "Страница не найдена",
+  "error.title": "Произошла непредвиденная ошибка",
+  "error.goToMain": "Перейти на главную страницу",
+  "error.reset": "Перезагрузить страницу"
 }

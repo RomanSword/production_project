@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { NavLink, LinkProps } from 'react-router-dom';
 
 import { FCCP } from 'app/types/declarations';
@@ -21,7 +22,7 @@ export const AppLink: FCCP<AppLinkProps> = ({
     children,
     theme = AppLinkTheme.PRIMARY,
     ...otherProps
-}) => {
+}): ReactElement => {
     return (
         <NavLink
             to={to}

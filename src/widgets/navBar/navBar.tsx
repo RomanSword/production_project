@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { classNames } from 'shared/lib';
@@ -9,7 +10,7 @@ interface NavBarProps {
     className?: string;
 }
 
-export const NavBar = ({ className }: NavBarProps) => {
+export const NavBar = ({ className }: NavBarProps): ReactElement => {
     const { t } = useTranslation();
 
     return (

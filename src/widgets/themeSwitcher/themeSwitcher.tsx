@@ -1,3 +1,5 @@
+import { ReactElement } from 'react';
+
 import { Theme, useTheme } from 'app/providers/themeProvider';
 
 import { Button, ButtonTheme } from 'shared/ui';
@@ -12,7 +14,7 @@ interface ThemeSwitcherProps {
     className?: string;
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+export const ThemeSwitcher = ({ className }: ThemeSwitcherProps): ReactElement => {
     const { theme, toggleTheme } = useTheme();
 
     return (

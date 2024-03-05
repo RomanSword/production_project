@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 
 import { Button } from 'shared/ui';
 import { classNames } from 'shared/lib';
@@ -10,7 +10,7 @@ interface SideBarProps {
     className?: string;
 }
 
-export const SideBar = ({ className }: SideBarProps) => {
+export const SideBar = ({ className }: SideBarProps): ReactElement => {
     const [collapsed, setCollapsed] = useState(false);
 
     const onClickTest = (): void => {

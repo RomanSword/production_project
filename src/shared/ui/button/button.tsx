@@ -10,13 +10,13 @@ export enum ButtonTheme {
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    className?: string;
     theme?: ButtonTheme;
+    className?: string;
 }
 
 export const Button: FCCP<ButtonProps> = ({
-    className,
     theme,
+    className,
     children,
     ...otherProps
 }): ReactElement => {
