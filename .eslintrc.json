@@ -23,5 +23,13 @@
         "no-unused-vars": "warn",
         "i18next/no-literal-string": ["error", { "markupOnly": true }],
         "@typescript-eslint/no-explicit-any": "warn"
-    }
+    },
+    "overrides": [
+        {
+            "files": ["**/src/**/*.test.{ts,tsx}"],
+            "rules": {
+                "i18next/no-literal-string": "off"
+            }
+        }
+    ]
 }
