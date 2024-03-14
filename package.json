@@ -13,7 +13,7 @@
     "prettier:fix": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "stylelint": "npx stylelint \"**/*.scss\"",
     "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
-    "test:unit": "npx jest --config ./config/jest/jest.config.ts"
+    "test": "npx jest --config ./config/jest/jest.config.ts"
   },
   "husky": {
     "hooks": {

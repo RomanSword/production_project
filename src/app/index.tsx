@@ -1,4 +1,4 @@
-import { ReactElement, Suspense, useEffect } from 'react';
+import { ReactElement, Suspense } from 'react';
 
 import { classNames } from 'shared/lib';
 
@@ -16,12 +16,6 @@ export const AppWrapper: FCC = ({ children }): ReactElement => {
 };
 
 export const AppLayout = (): ReactElement => {
-    useEffect(() => {
-        if (Math.random() > 0.5) {
-            throw new Error();
-        }
-    }, []);
-
     return (
         <Suspense fallback=''>
             <NavBar />

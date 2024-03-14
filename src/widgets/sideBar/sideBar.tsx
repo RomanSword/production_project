@@ -2,7 +2,10 @@ import { ReactElement, useState } from 'react';
 
 import { Button } from 'shared/ui';
 import { classNames } from 'shared/lib';
-import { LanguageSwitcher, ThemeSwitcher } from 'widgets';
+import { ThemeSwitcher } from 'widgets/themeSwitcher/themeSwitcher';
+import { LanguageSwitcher } from 'widgets/languageSwitcher/languageSwitcher';
+
+import ForwardIcon from 'shared/assets/icons/forward.svg';
 
 import cls from './sideBar.module.scss';
 
@@ -18,10 +21,22 @@ export const SideBar = ({ className }: SideBarProps): ReactElement => {
     };
 
     return (
-        <div className={classNames([cls.sideBar, className, collapsed && cls.collapsed])}>
-            <Button onClick={onClickTest}>Toggle</Button>
+        <div
+            data-testid='sideBar'
+            className={classNames([cls.sideBar, className, collapsed && cls.collapsed])}
+        >
+            <Button
+                data-testid='sideBar-toggle'
+                onClick={onClickTest}
+                className={classNames([
+                    cls.toggleButton,
+                    collapsed && cls.toggleButtonIconInverted
+                ])}
+            >
+                <ForwardIcon />
+            </Button>
 
-            <div className={cls.switchers}>
+            <div className={classNames([cls.switchers, collapsed && cls.switchersVertical])}>
                 <LanguageSwitcher />
                 <ThemeSwitcher />
             </div>

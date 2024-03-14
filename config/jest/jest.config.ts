@@ -1,3 +1,5 @@
+import path from 'path';
+
 import type { Config } from 'jest';
 
 const config: Config = {
@@ -13,8 +15,9 @@ const config: Config = {
     rootDir: '../../',
     testMatch: ['<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)'],
     moduleNameMapper: {
-        '\\.scss$': 'identity-obj-proxy'
-    },
+        '\\.scss$': 'identity-obj-proxy',
+        '\\.(jpg|jpeg|png|gif|webp|svg)$': path.resolve(__dirname, 'jestEmptyComponent.tsx')
+    }
 };
 
 export default config;

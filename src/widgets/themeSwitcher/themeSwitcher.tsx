@@ -19,6 +19,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps): ReactElement =
 
     return (
         <Button
+            data-testid='theme-switcher'
             theme={ButtonTheme.CLEAR}
             onClick={toggleTheme}
             className={classNames([cls.themeSwitcher, className])}

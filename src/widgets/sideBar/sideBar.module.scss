@@ -1,9 +1,13 @@
 .sideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
     background-color: var(--bg-color-inverted);
     position: relative;
     transition: width 0.1s;
+    padding: 10px 20px;
 }
 
 .collapsed {
@@ -11,10 +15,31 @@
 }
 
 .switchers {
-    position: absolute;
-    bottom: 20px;
     display: flex;
     justify-content: center;
     width: 100%;
     gap: 15px;
+}
+
+.switchersVertical {
+    flex-direction: column;
+}
+
+.toggleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    background-color: var(--bg-color-inverted);
+    border-color: var(--bg-color);
+
+    path {
+        fill: var(--bg-color);
+    }
+}
+
+.toggleButtonIconInverted {
+    transform: rotate(180deg);
 }
