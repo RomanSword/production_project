@@ -1,18 +1,13 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
 
 import { BuildOptions } from './types/config';
+import { buildCssLoader } from './loaders/buildCssLoader';
+import { buildImageLoader } from './loaders/buildImageLoader';
+import { buildSvgLoader } from './loaders/buildSvgLoader';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-    const imageLoader = {
-        test: /\.(png|jpe?g)$/i,
-        use: [{ loader: 'file-loader' }]
-    };
-
-    const svgLoader = {
-        test: /\.svg$/,
-        use: ['@svgr/webpack']
-    };
+    const imageLoader = buildImageLoader();
+    const svgLoader = buildSvgLoader();
 
     // Если не используем ts, то тут понадобится babel-loader
     const tsLoader = {
@@ -21,30 +16,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         exclude: /node_modules/
     };
 
-    const cssLoader = {
-        test: /\.s(a|c)ss$/,
-        use: [
-            options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-            {
-                loader: 'css-loader',
-                options: {
-                    modules: {
-                        auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        localIdentName: options.isDev
-                            ? '[path][name]__[local]--[hash:base64:5]'
-                            : '[hash:base64:8]'
-                    },
-                    sourceMap: options.isDev
-                }
-            },
-            {
-                loader: 'sass-loader',
-                options: {
-                    sourceMap: options.isDev
-                }
-            }
-        ]
-    };
+    const cssLoader = buildCssLoader(options.isDev);
 
     const babelLoader = {
         test: /\.(ts|tsx)$/,

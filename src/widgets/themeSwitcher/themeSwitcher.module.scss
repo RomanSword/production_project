@@ -3,4 +3,6 @@
     width: 40px;
     padding: 4px;
     background-color: var(--bg-color);
+    border: 1px solid var(--bg-color-inverted);
+    box-sizing: border-box;
 }

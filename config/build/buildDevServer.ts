@@ -4,9 +4,18 @@ import { BuildOptions } from './types/config';
 
 export function BuildDevServer(options: BuildOptions): DevServerConfiguration {
     return {
+        host: options.host,
         port: options.port,
         historyApiFallback: true,
-        open: true,
-        hot: true
+        open: false,
+        hot: true,
+        client: {
+            progress: true,
+            overlay: {
+                errors: true,
+                warnings: false,
+                runtimeErrors: true
+            }
+        }
     };
 }

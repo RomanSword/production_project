@@ -15,3 +15,11 @@ select {
 html {
     scroll-behavior: smooth;
 }
+
+.sb-show-main.sb-main-padded {
+    height: 100vh;
+}
+
+#storybook-root {
+    height: 100%;
+}

@@ -14,11 +14,13 @@ export default (env: BuildEnv): webpack.Configuration => {
 
     const mode = env.mode || 'development';
     const port = env.port || 3000;
+    const host = env.host || '0.0.0.0';
 
     return buildWebpackConfig({
         paths,
         mode,
         port,
+        host,
         isDev: mode === 'development'
     });
 };
