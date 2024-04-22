@@ -1,8 +1,8 @@
-import { ThemeProvider } from 'app/providers/themeProvider';
 import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
+import { Theme, ThemeProvider } from 'app/providers/themeProvider';
 import i18nConfig from 'shared/config/i18n';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,12 +37,25 @@ const routerDecorator = (Story: any) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const themeDecorator = (Story: any) => {
+export const themeLightDecorator = (Story: any) => {
     return (
-        <ThemeProvider>
-            <Story />
-        </ThemeProvider>
+        <div className='app light app_storybook'>
+            <ThemeProvider themeName={Theme.LIGHT}>
+                <Story />
+            </ThemeProvider>
+        </div>
     );
 };
 
-export const decorators = [i18nDecorator, routerDecorator, themeDecorator];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const themeDarkDecorator = (Story: any) => {
+    return (
+        <div className='app dark app_storybook'>
+            <ThemeProvider themeName={Theme.DARK}>
+                <Story />
+            </ThemeProvider>
+        </div>
+    );
+};
+
+export const decorators = [i18nDecorator, routerDecorator];

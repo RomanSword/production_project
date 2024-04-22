@@ -9,6 +9,8 @@
         "prettier",
         "plugin:@typescript-eslint/recommended",
         "plugin:i18next/recommended",
+        "plugin:storybook/recommended",
+        "plugin:storybook/recommended",
         "plugin:storybook/recommended"
     ],
     "parser": "@typescript-eslint/parser",

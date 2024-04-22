@@ -1,20 +1,10 @@
 import type { Preview } from '@storybook/react';
-import { withThemeByClassName } from '@storybook/addon-themes';
 
 import i18nConfig from '../../src/shared/config/i18n';
 
 import '../../src/app/styles/index.scss';
 
 const preview: Preview = {
-    decorators: [
-        withThemeByClassName({
-            themes: {
-                light: 'app light',
-                dark: 'app dark'
-            },
-            defaultTheme: 'light'
-        })
-    ],
     globals: {
         locale: 'en',
         locales: {
