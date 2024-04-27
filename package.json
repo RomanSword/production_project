@@ -13,7 +13,9 @@
     "prettier:fix": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "stylelint": "npx stylelint \"**/*.scss\"",
     "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
-    "test": "npx jest --config ./config/jest/jest.config.ts",
+    "test:unit": "npx jest --config ./config/jest/jest.config.ts",
+    "test:ui": "npx loki test",
+    "test:ui:ok": "npx loki approve",
     "storybook:dev": "storybook dev --config-dir ./config/storybook -p 6006",
     "storybook:build": "storybook build --config-dir ./config/storybook"
   },
