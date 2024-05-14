@@ -1,28 +1,75 @@
 .sideBar {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
     background-color: var(--bg-color-inverted);
     position: relative;
     transition: width 0.1s;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+
+    .link {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 20px 30px;
+
+        svg {
+            fill: var(--bg-color);
+        }
+
+        &[aria-current="page"] {
+            color: var(--primary-color);
+            background-color: var(--bg-color);
+            opacity: 0.9;
+
+            svg {
+                fill: var(--bg-color-inverted);
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .linkText {
+        margin-left: 10px;
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 15px;
     padding: 10px 20px;
 }
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
-}
 
-.switchers {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 15px;
-}
+    .links {
+        .link {
+            padding: 20px 25px;
+        }
+    }
 
-.switchersVertical {
-    flex-direction: column;
+    .linkText {
+        display: none;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
 }
 
 .toggleButton {

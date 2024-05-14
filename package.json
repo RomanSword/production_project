@@ -18,7 +18,8 @@
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "storybook:dev": "storybook dev --config-dir ./config/storybook -p 6006",
-    "storybook:build": "storybook build --config-dir ./config/storybook"
+    "storybook:build": "storybook build --config-dir ./config/storybook",
+    "visual:report:html": "node scripts/generate-visual-json-report.js && reg-cli --from .loki/report.json --report .loki/report.html"
   },
   "husky": {
     "hooks": {
@@ -75,6 +76,7 @@
     "jest-environment-jsdom": "29.7.0",
     "mini-css-extract-plugin": "2.7.6",
     "prettier": "3.2.5",
+    "reg-cli": "^0.18.5",
     "sass": "1.69.5",
     "sass-loader": "13.3.2",
     "storybook": "8.0.0",

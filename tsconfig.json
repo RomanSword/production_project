@@ -29,5 +29,9 @@
         "compilerOptions": {
             "module": "CommonJS"
         }
-    }
+    },
+    "exclude": [
+        "./storybook-static",
+        "./build"
+    ]
 }

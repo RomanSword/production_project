@@ -1,8 +1,10 @@
 import { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { classNames } from 'shared/lib';
-import { AppLink, AppLinkTheme } from 'shared/ui';
+import { ThemeSwitcher } from 'widgets/themeSwitcher/themeSwitcher';
+import { LanguageSwitcher } from 'widgets/languageSwitcher/languageSwitcher';
+
+import LogoImage from 'shared/assets/images/logo.svg';
 
 import cls from './navBar.module.scss';
 
@@ -11,23 +13,15 @@ interface NavBarProps {
 }
 
 export const NavBar = ({ className }: NavBarProps): ReactElement => {
-    const { t } = useTranslation();
-
     return (
         <div className={classNames([cls.navBar, className])}>
-            <div className={cls.links}>
-                <AppLink
-                    to='/'
-                    theme={AppLinkTheme.SECONDARY}
-                >
-                    {t('link.main')}
-                </AppLink>
-                <AppLink
-                    to='/help'
-                    theme={AppLinkTheme.SECONDARY}
-                >
-                    {t('link.help')}
-                </AppLink>
+            <div className={cls.logo}>
+                <LogoImage />
+            </div>
+
+            <div className={cls.innerBlock}>
+                <LanguageSwitcher />
+                <ThemeSwitcher />
             </div>
         </div>
     );

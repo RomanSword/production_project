@@ -5,3 +5,5 @@
 .eslintcache
 *storybook.log
 .pnp.*
+.loki/report.html
+.loki/report.json
