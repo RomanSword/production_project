@@ -30,20 +30,15 @@ jobs:
 
     - name: Lint
       run: npm run lint
-      if: always()
 
     - name: Stylelint
       run: npm run stylelint
-      if: always()
 
     - name: Test unit
       run: npm run test:unit
-      if: always()
 
     - name: Build storybook
       run: npm run storybook:build
-      if: always()
 
     - name: Run screenshot test with storybook
       run: npm run test:ui:ci
-      if: always()
