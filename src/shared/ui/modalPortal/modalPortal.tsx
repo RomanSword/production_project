@@ -2,7 +2,6 @@ import { ReactElement, useEffect } from 'react';
 
 import { FCCP } from 'app/types/declarations';
 import { classNames } from 'shared/lib';
-import { Button, ButtonTheme } from 'shared/ui';
 import CloseIcon from 'shared/assets/icons/close.svg';
 
 import cls from './modalPortal.module.scss';
@@ -54,14 +53,12 @@ export const ModalPortal: FCCP<ModalPortalProps> = ({
                     {children}
                 </div>
 
-                <Button
-                    data-testid='theme-switcher'
-                    theme={ButtonTheme.CLEAR}
+                <div
                     onClick={onCloseClick}
                     className={cls.closeButton}
                 >
                     <CloseIcon />
-                </Button>
+                </div>
             </div>
         </div>
     );
