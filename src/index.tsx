@@ -5,6 +5,7 @@ import { AppWrapper, AppLayout } from 'app';
 import { ThemeProvider } from 'app/providers/themeProvider';
 import { ErrorBoundary } from 'app/providers/errorBoundary';
 
+import 'app/styles/index.scss';
 import 'shared/config/i18n';
 
 const container = document.getElementById('root');

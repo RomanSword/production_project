@@ -3,23 +3,24 @@
 @import "themes/light";
 @import "themes/dark";
 
-.app {
+body {
     font: var(--font-m);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100vh;
     background-color: var(--bg-color);
     color: var(--primary-color);
-    min-height: 100vh;
-
-    &_storybook {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding: 1rem;
-    }
 }
 
 .content-wrapper {
     display: flex;
+    width: 100%;
+    flex: 1;
 }
 
 .content {

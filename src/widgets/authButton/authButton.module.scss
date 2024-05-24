@@ -1,0 +1,18 @@
+.loginButton {
+    height: 40px;
+    padding: 4px 8px;
+    background-color: var(--bg-color);
+    color: var(--bg-color-inverted);
+    border: 1px solid var(--bg-color-inverted);
+    box-sizing: border-box;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.fieldset {
+    gap: 10px;
+}

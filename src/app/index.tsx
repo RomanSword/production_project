@@ -7,8 +7,6 @@ import { FCC } from 'app/types/declarations';
 import { AppRouter } from 'app/providers/router';
 import { NavBar, SideBar } from 'widgets';
 
-import './styles/index.scss';
-
 export const AppWrapper: FCC = ({ children }): ReactElement => {
     const { theme } = useTheme();
 

@@ -6,7 +6,7 @@ import { Theme, ThemeProvider } from 'app/providers/themeProvider';
 import i18nConfig from 'shared/config/i18n';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const i18nDecorator = (Story: any, context: any) => {
+const I18nDecorator = (Story: any, context: any) => {
     const { locale } = context.globals;
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const routerDecorator = (Story: any) => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const themeLightDecorator = (Story: any) => {
     return (
-        <div className='app light app_storybook'>
+        <div className='app light'>
             <ThemeProvider themeName={Theme.LIGHT}>
                 <Story />
             </ThemeProvider>
@@ -50,7 +50,7 @@ export const themeLightDecorator = (Story: any) => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const themeDarkDecorator = (Story: any) => {
     return (
-        <div className='app dark app_storybook'>
+        <div className='app dark'>
             <ThemeProvider themeName={Theme.DARK}>
                 <Story />
             </ThemeProvider>
@@ -58,4 +58,4 @@ export const themeDarkDecorator = (Story: any) => {
     );
 };
 
-export const decorators = [i18nDecorator, routerDecorator];
+export const decorators = [I18nDecorator, routerDecorator];

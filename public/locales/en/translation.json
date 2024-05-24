@@ -5,5 +5,8 @@
   "not_found": "Page not found",
   "error.title": "An unexpected error occurred",
   "error.goToMain": "Go to main page",
-  "error.reset": "Reload page"
+  "error.reset": "Reload page",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password"
 }
