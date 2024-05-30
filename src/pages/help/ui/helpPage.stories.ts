@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
-    decorators,
+    pageDecorators,
     themeDarkDecorator,
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
@@ -9,7 +9,7 @@ import {
 import HelpPage from './helpPage';
 
 const meta = {
-    decorators,
+    decorators: pageDecorators,
     title: 'pages/HelpPage',
     component: HelpPage
 } satisfies Meta<typeof HelpPage>;

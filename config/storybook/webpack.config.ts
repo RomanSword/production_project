@@ -8,6 +8,9 @@ import { buildSvgLoader } from '../build/loaders/buildSvgLoader';
 export default ({ config }: { config: webpack.Configuration }) => {
     config.resolve.modules.push(path.resolve(__dirname, '../../src'));
     config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.alias = {
+        entities: path.resolve(__dirname, '..', '..', 'src', 'entities')
+    };
 
     config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
         if (/svg/.test(rule.test as string)) {

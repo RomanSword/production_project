@@ -2,6 +2,7 @@ import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
+import { StoreProvider } from 'app/providers/storeProvider';
 import { Theme, ThemeProvider } from 'app/providers/themeProvider';
 import i18nConfig from 'shared/config/i18n';
 
@@ -58,4 +59,14 @@ export const themeDarkDecorator = (Story: any) => {
     );
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const storeDecorator = (Story: any) => {
+    return (
+        <StoreProvider>
+            <Story />
+        </StoreProvider>
+    );
+};
+
 export const decorators = [I18nDecorator, routerDecorator];
+export const pageDecorators = [storeDecorator, I18nDecorator, routerDecorator];
