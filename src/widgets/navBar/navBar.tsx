@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import { classNames } from 'shared/lib';
 import { ThemeSwitcher } from 'widgets/themeSwitcher/themeSwitcher';
 import { LanguageSwitcher } from 'widgets/languageSwitcher/languageSwitcher';
-import { AuthButton } from 'widgets/authButton/authButton';
+import { LoginModalButton } from 'features';
 
 import LogoImage from 'shared/assets/images/logo.svg';
 
@@ -21,7 +21,7 @@ export const NavBar = ({ className }: NavBarProps): ReactElement => {
             </div>
 
             <div className={cls.innerBlock}>
-                <AuthButton />
+                <LoginModalButton />
                 <LanguageSwitcher />
                 <ThemeSwitcher />
             </div>

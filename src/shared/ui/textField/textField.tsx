@@ -9,6 +9,8 @@ interface TextFieldProps {
     id: string;
     name: string;
     label: string;
+    autoFocus?: boolean;
+    testId?: string;
     type?: HTMLInputTypeAttribute;
     value?: string;
     onChange?: (value: string) => void;
@@ -22,6 +24,8 @@ export const TextField: FCCP<TextFieldProps> = (props): ReactElement => {
         id,
         name,
         label,
+        testId,
+        autoFocus = false,
         type = 'text',
         value = '',
         onChange = () => {},
@@ -38,8 +42,9 @@ export const TextField: FCCP<TextFieldProps> = (props): ReactElement => {
 
     return (
         <label
-            className={classNames([cls.container, className])}
             htmlFor={id || name}
+            data-testid={testId || id}
+            className={classNames([cls.container, className])}
         >
             <span
                 className={cls.label}
@@ -55,6 +60,7 @@ export const TextField: FCCP<TextFieldProps> = (props): ReactElement => {
                 type={type}
                 className={cls.input}
                 onChange={handleOnChange}
+                autoFocus={autoFocus}
             />
 
             <div className={cls.error}>{isErrorExist ? error : ''}</div>

@@ -22,7 +22,7 @@ export const LanguageSwitcher = ({ className }: LanguageSwitcherProps): ReactEle
             data-testid='language-switcher'
             theme={ButtonTheme.CLEAR}
             onClick={toggle}
-            className={classNames([cls.languageSwitcher, className])}
+            className={classNames([cls.button, className])}
         >
             {t('switcher.language')}
         </Button>

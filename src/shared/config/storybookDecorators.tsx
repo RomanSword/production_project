@@ -38,10 +38,10 @@ const routerDecorator = (Story: any) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const themeLightDecorator = (Story: any) => {
+const themeDecoratorContent = (Story: any, theme: Theme) => {
     return (
-        <div className='app light'>
-            <ThemeProvider themeName={Theme.LIGHT}>
+        <div className={`app ${theme}`}>
+            <ThemeProvider themeName={theme}>
                 <Story />
             </ThemeProvider>
         </div>
@@ -49,14 +49,13 @@ export const themeLightDecorator = (Story: any) => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const themeLightDecorator = (Story: any) => {
+    return themeDecoratorContent(Story, Theme.LIGHT);
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const themeDarkDecorator = (Story: any) => {
-    return (
-        <div className='app dark'>
-            <ThemeProvider themeName={Theme.DARK}>
-                <Story />
-            </ThemeProvider>
-        </div>
-    );
+    return themeDecoratorContent(Story, Theme.DARK);
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

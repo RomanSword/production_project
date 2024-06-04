@@ -32,6 +32,7 @@
     },
     "exclude": [
         "./storybook-static",
-        "./build"
+        "./build",
+        "./json-server"
     ]
 }

@@ -6,13 +6,13 @@ import {
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
 
-import { ModalPortal } from './modalPortal';
+import { Modal } from './modal';
 
 const meta = {
     decorators,
-    title: 'shared/ModalPortal',
-    component: ModalPortal
-} satisfies Meta<typeof ModalPortal>;
+    title: 'shared/Modal',
+    component: Modal
+} satisfies Meta<typeof Modal>;
 
 type Story = StoryObj<typeof meta>;
 

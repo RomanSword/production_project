@@ -13,14 +13,14 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const tsLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
+        exclude: [/node_modules/, /json-server/]
     };
 
     const cssLoader = buildCssLoader(options.isDev);
 
     const babelLoader = {
         test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /json-server/],
         use: {
             loader: 'babel-loader',
             options: {

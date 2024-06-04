@@ -4,14 +4,14 @@ import { FCCP } from 'app/types/declarations';
 import { classNames } from 'shared/lib';
 import CloseIcon from 'shared/assets/icons/close.svg';
 
-import cls from './modalPortal.module.scss';
+import cls from './modal.module.scss';
 
-interface ModalPortalProps {
+interface PortalProps {
     onClose?: () => void;
     className?: string;
 }
 
-export const ModalPortal: FCCP<ModalPortalProps> = ({
+export const Modal: FCCP<PortalProps> = ({
     children,
     onClose = () => {},
     className = ''
