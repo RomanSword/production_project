@@ -11,6 +11,7 @@
     "build:dev": "webpack --env mode=development",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:tsCheck": "tsc --project ./tsconfig.json --noEmit --skipLibCheck",
     "prettier:fix": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "stylelint": "npx stylelint \"**/*.scss\"",
     "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
