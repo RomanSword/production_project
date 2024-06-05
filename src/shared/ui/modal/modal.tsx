@@ -6,12 +6,12 @@ import CloseIcon from 'shared/assets/icons/close.svg';
 
 import cls from './modal.module.scss';
 
-interface PortalProps {
+interface ModalProps {
     onClose?: () => void;
     className?: string;
 }
 
-export const Modal: FCCP<PortalProps> = ({
+export const Modal: FCCP<ModalProps> = ({
     children,
     onClose = () => {},
     className = ''
