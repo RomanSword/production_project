@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, ButtonTheme } from 'shared/ui';
+import { Button } from 'shared/ui';
 import { classNames } from 'shared/lib';
 
 import cls from './languageSwitcher.module.scss';
@@ -20,7 +20,6 @@ export const LanguageSwitcher = ({ className }: LanguageSwitcherProps): ReactEle
     return (
         <Button
             data-testid='language-switcher'
-            theme={ButtonTheme.CLEAR}
             onClick={toggle}
             className={classNames([cls.button, className])}
         >

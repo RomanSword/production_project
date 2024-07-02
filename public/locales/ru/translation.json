@@ -2,11 +2,17 @@
   "switcher.language": "Ru",
   "link.main": "Главная",
   "link.help": "Помощь",
-  "not_found": "Страница не найдена",
+  "link.profile": "Профиль",
+  "error.not_found": "Страница не найдена",
+  "error.access_denied": "Отказано в доступе",
   "error.title": "Произошла непредвиденная ошибка",
-  "error.goToMain": "Перейти на главную страницу",
+  "error.go_to_main": "Перейти на главную страницу",
   "error.reset": "Перезагрузить страницу",
   "login": "Войти",
   "email": "Почта",
-  "password": "Пароль"
+  "password": "Пароль",
+  "logout": "Выйти",
+  "username": "Пользователь",
+  "loading": "Загрузка",
+  "login_form_title": "Форма входа"
 }

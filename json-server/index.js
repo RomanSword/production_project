@@ -7,6 +7,7 @@ const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
+server.use(jsonServer.bodyParser);
 
 server.use(async (req, res, next) => {
     await new Promise(res => {
@@ -17,8 +18,8 @@ server.use(async (req, res, next) => {
 });
 
 server.use((req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'Auth Error' });
+    if (!(req.url.includes('login') && req.method === 'POST') && !req.headers.authorization) {
+        return res.status(403).json({ message: 'access_denied' });
     }
 
     next();
@@ -31,18 +32,19 @@ server.post('/login', (req, res) => {
 
     const { users } = db;
 
-    const user = user.find(item => item.username === username && item.password === password);
+    const user = users.find(item => item.username === username && item.password === password);
 
     if (user) {
+        delete user.password;
+
         return res.json(user);
     }
 
-    return res.status(403).json({ message: 'Auth Error' });
+    return res.status(403).json({ message: 'request_payload_data_is_incorrect' });
 });
 
-server.use(jsonServer.defaults());
 server.use(router);
 
 server.listen(8000, () => {
     console.log('server is running on http://localhost:8000');
-})
+});

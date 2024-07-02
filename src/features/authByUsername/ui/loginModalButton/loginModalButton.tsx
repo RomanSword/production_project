@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, ButtonTheme, Modal, Portal } from 'shared/ui';
+import { Button, Modal, Portal } from 'shared/ui';
 
 import { LoginForm } from '../loginForm/loginForm';
 import cls from './loginModalButton.module.scss';
@@ -18,7 +18,6 @@ export const LoginModalButton = (): ReactElement => {
         <>
             <Button
                 data-testid='call-login-modal-button'
-                theme={ButtonTheme.CLEAR}
                 onClick={handleOnLoginModalClick}
                 className={cls.button}
             >

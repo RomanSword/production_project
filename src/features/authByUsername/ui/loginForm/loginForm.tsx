@@ -1,44 +1,80 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, memo, useCallback, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { Button, ButtonTheme, TextField } from 'shared/ui';
+import { Button, TextBlock, TextBlockType, TextField } from 'shared/ui';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+
+import {
+    getLoginUsername,
+    getLoginPassword,
+    getLoginIsLoading,
+    getLoginError
+} from '../../model/selectors';
+import { loginActions } from '../../model/slice/loginSlice';
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 
 import cls from './loginForm.module.scss';
 
-export const LoginForm = (): ReactElement => {
+export const LoginForm = memo((): ReactElement => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        return () => {
+            dispatch(loginActions.clear());
+        };
+    }, [dispatch]);
+
     const { t } = useTranslation();
-    const [login, changeLogin] = useState('');
-    const [password, changePassword] = useState('');
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const isLoading = useSelector(getLoginIsLoading);
+    const error = useSelector(getLoginError);
 
-    const onSubmitClick = (): void => {
-        console.log('submit');
-    };
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value));
+        },
+        [dispatch]
+    );
 
-    const onChangeLogin = (value: string) => {
-        changeLogin(value);
-    };
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch]
+    );
 
-    const onChangePassword = (value: string) => {
-        changePassword(value);
-    };
+    const onSubmit = useCallback((): void => {
+        dispatch(loginByUsername({ username, password }));
+    }, [dispatch, username, password]);
 
     return (
-        <div className={cls.form}>
+        <form
+            className={cls.form}
+            onSubmit={onSubmit}
+        >
+            <TextBlock
+                className={cls.formTitle}
+                type={TextBlockType.TITLE}
+                text={t('login_form_title')}
+            />
+
             <fieldset className={cls.fieldset}>
                 <TextField
-                    id='login_email'
-                    testId='login-email-text-field'
-                    label={t('email')}
-                    name='email'
-                    type='email'
-                    value={login}
+                    id='login_username'
+                    testId='login-username-text-field'
+                    label={t('username')}
+                    name='username'
+                    type='text'
+                    value={username}
                     autoFocus={true}
-                    onChange={onChangeLogin}
+                    onChange={onChangeUsername}
                 />
 
                 <TextField
                     id='login_password'
-                    testId='login-password-text-field'
+                    testId='username-password-text-field'
                     label={t('password')}
                     name='password'
                     type='password'
@@ -47,14 +83,19 @@ export const LoginForm = (): ReactElement => {
                 />
             </fieldset>
 
+            <TextBlock
+                className={cls.formError}
+                type={TextBlockType.ERROR}
+                text={error}
+            />
+
             <Button
                 data-testid='login-submit-button'
-                theme={ButtonTheme.CLEAR}
-                onClick={onSubmitClick}
-                className={cls.loginButton}
+                onClick={onSubmit}
+                isLoading={isLoading}
             >
                 {t('login')}
             </Button>
-        </div>
+        </form>
     );
-};
+});

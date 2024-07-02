@@ -13,10 +13,10 @@
     width: 140px;
     box-sizing: border-box;
     padding-bottom: 1px;
-    font-size: 15px;
+    font-size: var(--font-size-m);
 
     &[data-error="true"] {
-        color: var(--red);
+        color: var(--danger);
     }
 
     &[data-error="false"] {
@@ -34,12 +34,12 @@
     margin-bottom: 4px;
     box-sizing: border-box;
     color: var(--bg-color-inverted);
-    font-size: 15px;
+    font-size: var(--font-size-m);
     text-align: right;
     background-color: var(--bg-color);
 
     &[data-error="true"] {
-        border-color: var(--red);
+        border-color: var(--danger);
     }
 
     &[data-error="false"] {
@@ -51,6 +51,6 @@
     display: block;
     height: 17px;
     padding-left: 5px;
-    font-size: 13px;
-    color: var(--red);
+    font-size: --font-size-s;
+    color: var(--danger);
 }

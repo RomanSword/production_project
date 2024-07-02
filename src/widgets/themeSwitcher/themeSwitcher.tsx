@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 import { Theme, useTheme } from 'app/providers/themeProvider';
 
-import { Button, ButtonTheme } from 'shared/ui';
+import { Button } from 'shared/ui';
 import { classNames } from 'shared/lib';
 
 import SunIcon from 'shared/assets/icons/sun.svg';
@@ -20,7 +20,6 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps): ReactElement =
     return (
         <Button
             data-testid='theme-switcher'
-            theme={ButtonTheme.CLEAR}
             onClick={toggleTheme}
             className={classNames([cls.themeSwitcher, className])}
         >

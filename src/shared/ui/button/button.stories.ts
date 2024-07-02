@@ -25,6 +25,14 @@ export const PrimaryLight: Story = {
     decorators: [themeLightDecorator]
 };
 
+export const PrimaryLightDisabled: Story = {
+    args: {
+        isDisabled: true,
+        children: 'Button text'
+    },
+    decorators: [themeLightDecorator]
+};
+
 export const ClearLight: Story = {
     args: {
         children: 'Button text',
@@ -43,6 +51,14 @@ export const OutlineLight: Story = {
 
 export const PrimaryDark: Story = {
     args: {
+        children: 'Button text'
+    },
+    decorators: [themeDarkDecorator]
+};
+
+export const PrimaryDarkDisabled: Story = {
+    args: {
+        isDisabled: true,
         children: 'Button text'
     },
     decorators: [themeDarkDecorator]

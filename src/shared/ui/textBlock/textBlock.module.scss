@@ -1,0 +1,21 @@
+.container {
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.text {
+    font-size: var(--font-size-m);
+}
+
+.title {
+    font-size: var(--font-size-l);
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    color: var(--danger);
+    background-color: var(--bg-color);
+    border: 2px solid var(--danger);
+    font-size: var(--font-size-m);
+}

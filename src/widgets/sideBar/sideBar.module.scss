@@ -71,18 +71,12 @@
 }
 
 .toggleButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
     width: 40px;
-    padding: 4px;
-    background-color: var(--bg-color-inverted);
-    border-color: var(--bg-color);
+    height: 40px;
     transform: rotate(180deg);
 
     path {
-        fill: var(--bg-color);
+        fill: var(--primary-color);
     }
 }
 

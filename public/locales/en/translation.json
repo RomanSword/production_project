@@ -2,11 +2,17 @@
   "switcher.language": "Eng",
   "link.main": "Main",
   "link.help": "Help",
-  "not_found": "Page not found",
+  "link.profile": "Profile",
+  "error.not_found": "Page not found",
+  "error.access_denied": "Access denied",
   "error.title": "An unexpected error occurred",
-  "error.goToMain": "Go to main page",
+  "error.go_to_main": "Go to main page",
   "error.reset": "Reload page",
   "login": "Login",
   "email": "Email",
-  "password": "Password"
+  "password": "Password",
+  "logout": "Log out",
+  "username": "User name",
+  "loading": "Loading",
+  "login_form_title": "Login form"
 }

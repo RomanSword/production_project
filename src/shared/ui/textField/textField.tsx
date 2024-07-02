@@ -1,6 +1,5 @@
 import { ReactElement, HTMLInputTypeAttribute, ChangeEvent } from 'react';
 
-import { FCCP } from 'app/types/declarations';
 import { classNames } from 'shared/lib';
 
 import cls from './textField.module.scss';
@@ -19,7 +18,7 @@ interface TextFieldProps {
     error?: string;
 }
 
-export const TextField: FCCP<TextFieldProps> = (props): ReactElement => {
+export const TextField = (props: TextFieldProps): ReactElement => {
     const {
         id,
         name,

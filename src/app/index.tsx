@@ -1,11 +1,12 @@
-import { ReactElement, Suspense } from 'react';
+import { ReactElement, Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { classNames } from 'shared/lib';
-
-import { useTheme } from 'app/providers/themeProvider';
 import { FCC } from 'app/types/declarations';
 import { AppRouter } from 'app/providers/router';
+import { useTheme } from 'app/providers/themeProvider';
+import { classNames } from 'shared/lib';
 import { NavBar, SideBar } from 'widgets';
+import { userActions } from 'entities/user';
 
 export const AppWrapper: FCC = ({ children }): ReactElement => {
     const { theme } = useTheme();
@@ -13,7 +14,13 @@ export const AppWrapper: FCC = ({ children }): ReactElement => {
     return <div className={classNames(['app', theme])}>{children}</div>;
 };
 
-export const AppLayout = (): ReactElement => {
+export function AppLayout(): ReactElement {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(userActions.initAuthData());
+    }, [dispatch]);
+
     return (
         <Suspense fallback=''>
             <NavBar />
@@ -24,4 +31,4 @@ export const AppLayout = (): ReactElement => {
             </div>
         </Suspense>
     );
-};
+}

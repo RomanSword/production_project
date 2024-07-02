@@ -1,5 +1,6 @@
 :root {
     --font-family-main: sans-serif;
+    --font-size-s: 13px;
     --font-size-m: 16px;
     --font-line-m: 24px;
     --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
@@ -11,5 +12,4 @@
     --sidebar-width-collapsed: 80px;
     --modal-z-index: 9999;
     --modal-background-color: rgb(0 0 0 / 75%);
-    --red: #f33044;
 }
