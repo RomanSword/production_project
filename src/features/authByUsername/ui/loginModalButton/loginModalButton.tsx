@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Button, Modal, Portal } from 'shared/ui';
 
-import { LoginForm } from '../loginForm/loginForm';
+import { LoginFormAsync } from '../loginForm/loginForm.async';
 import cls from './loginModalButton.module.scss';
 
 export const LoginModalButton = (): ReactElement => {
@@ -27,7 +27,7 @@ export const LoginModalButton = (): ReactElement => {
             {isModalVisible && (
                 <Portal>
                     <Modal onClose={handleOnLoginModalClick}>
-                        <LoginForm />
+                        <LoginFormAsync />
                     </Modal>
                 </Portal>
             )}

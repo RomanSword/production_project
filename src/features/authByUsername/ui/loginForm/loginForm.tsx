@@ -16,7 +16,7 @@ import { loginByUsername } from '../../model/services/loginByUsername/loginByUse
 
 import cls from './loginForm.module.scss';
 
-export const LoginForm = memo((): ReactElement => {
+const LoginForm = memo((): ReactElement => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -99,3 +99,5 @@ export const LoginForm = memo((): ReactElement => {
         </form>
     );
 });
+
+export default LoginForm;

@@ -1,12 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
-import { StoreProvider } from 'app/providers/storeProvider';
+import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
 import { Theme, ThemeProvider } from 'app/providers/themeProvider';
 import i18nConfig from 'shared/config/i18n';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const I18nDecorator = (Story: any, context: any) => {
     const { locale } = context.globals;
 
@@ -23,7 +23,6 @@ const I18nDecorator = (Story: any, context: any) => {
     );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const routerDecorator = (Story: any) => {
     return (
         <MemoryRouter>
@@ -37,7 +36,6 @@ const routerDecorator = (Story: any) => {
     );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const themeDecoratorContent = (Story: any, theme: Theme) => {
     return (
         <div className={`app ${theme}`}>
@@ -48,18 +46,23 @@ const themeDecoratorContent = (Story: any, theme: Theme) => {
     );
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const themeLightDecorator = (Story: any) => {
     return themeDecoratorContent(Story, Theme.LIGHT);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const themeDarkDecorator = (Story: any) => {
     return themeDecoratorContent(Story, Theme.DARK);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const storeDecorator = (Story: any) => {
+export const storeDecorator = (Story: any, initialState: StateSchema) => {
+    return (
+        <StoreProvider initialState={initialState}>
+            <Story />
+        </StoreProvider>
+    );
+};
+
+export const emptyStoreDecorator = (Story: any) => {
     return (
         <StoreProvider>
             <Story />
@@ -68,4 +71,4 @@ export const storeDecorator = (Story: any) => {
 };
 
 export const decorators = [I18nDecorator, routerDecorator];
-export const pageDecorators = [storeDecorator, I18nDecorator, routerDecorator];
+export const pageDecorators = [emptyStoreDecorator, I18nDecorator, routerDecorator];
