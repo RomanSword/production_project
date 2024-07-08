@@ -1,7 +1,7 @@
-import { ReactElement, useCallback, useState } from 'react';
+import { ReactElement, Suspense, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { Button, Modal, Portal } from 'shared/ui';
+import { Button, Modal, Portal, Spinner } from 'shared/ui';
 
 import { LoginFormAsync } from '../loginForm/loginForm.async';
 import cls from './loginModalButton.module.scss';
@@ -27,7 +27,9 @@ export const LoginModalButton = (): ReactElement => {
             {isModalVisible && (
                 <Portal>
                     <Modal onClose={handleOnLoginModalClick}>
-                        <LoginFormAsync />
+                        <Suspense fallback={<Spinner />}>
+                            <LoginFormAsync />
+                        </Suspense>
                     </Modal>
                 </Portal>
             )}

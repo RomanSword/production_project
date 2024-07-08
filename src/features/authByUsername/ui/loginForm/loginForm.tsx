@@ -1,4 +1,4 @@
-import { ReactElement, memo, useCallback, useEffect } from 'react';
+import { ReactElement, memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -11,19 +11,21 @@ import {
     getLoginIsLoading,
     getLoginError
 } from '../../model/selectors';
-import { loginActions } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 
 import cls from './loginForm.module.scss';
+import {
+    DynamicModuleLoader,
+    ReducerList
+} from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
+
+const initialReducers: ReducerList = {
+    login: loginReducer
+};
 
 const LoginForm = memo((): ReactElement => {
     const dispatch = useAppDispatch();
-
-    useEffect(() => {
-        return () => {
-            dispatch(loginActions.clear());
-        };
-    }, [dispatch]);
 
     const { t } = useTranslation();
     const username = useSelector(getLoginUsername);
@@ -50,53 +52,55 @@ const LoginForm = memo((): ReactElement => {
     }, [dispatch, username, password]);
 
     return (
-        <form
-            className={cls.form}
-            onSubmit={onSubmit}
-        >
-            <TextBlock
-                className={cls.formTitle}
-                type={TextBlockType.TITLE}
-                text={t('login_form_title')}
-            />
-
-            <fieldset className={cls.fieldset}>
-                <TextField
-                    id='login_username'
-                    testId='login-username-text-field'
-                    label={t('username')}
-                    name='username'
-                    type='text'
-                    value={username}
-                    autoFocus={true}
-                    onChange={onChangeUsername}
-                />
-
-                <TextField
-                    id='login_password'
-                    testId='username-password-text-field'
-                    label={t('password')}
-                    name='password'
-                    type='password'
-                    value={password}
-                    onChange={onChangePassword}
-                />
-            </fieldset>
-
-            <TextBlock
-                className={cls.formError}
-                type={TextBlockType.ERROR}
-                text={error}
-            />
-
-            <Button
-                data-testid='login-submit-button'
-                onClick={onSubmit}
-                isLoading={isLoading}
+        <DynamicModuleLoader reducerList={initialReducers}>
+            <form
+                className={cls.form}
+                onSubmit={onSubmit}
             >
-                {t('login')}
-            </Button>
-        </form>
+                <TextBlock
+                    className={cls.formTitle}
+                    type={TextBlockType.TITLE}
+                    text={t('login_form_title')}
+                />
+
+                <fieldset className={cls.fieldset}>
+                    <TextField
+                        id='login_username'
+                        testId='login-username-text-field'
+                        label={t('username')}
+                        name='username'
+                        type='text'
+                        value={username}
+                        autoFocus={true}
+                        onChange={onChangeUsername}
+                    />
+
+                    <TextField
+                        id='login_password'
+                        testId='username-password-text-field'
+                        label={t('password')}
+                        name='password'
+                        type='password'
+                        value={password}
+                        onChange={onChangePassword}
+                    />
+                </fieldset>
+
+                <TextBlock
+                    className={cls.formError}
+                    type={TextBlockType.ERROR}
+                    text={error}
+                />
+
+                <Button
+                    data-testid='login-submit-button'
+                    onClick={onSubmit}
+                    isLoading={isLoading}
+                >
+                    {t('login')}
+                </Button>
+            </form>
+        </DynamicModuleLoader>
     );
 });
 

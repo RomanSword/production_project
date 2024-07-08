@@ -6,6 +6,8 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
 import { Theme, ThemeProvider } from 'app/providers/themeProvider';
 import i18nConfig from 'shared/config/i18n';
+import { ReducerList } from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
+import { loginReducer } from 'features/authByUsername/model/slice/loginSlice';
 
 const I18nDecorator = (Story: any, context: any) => {
     const { locale } = context.globals;
@@ -54,9 +56,20 @@ export const themeDarkDecorator = (Story: any) => {
     return themeDecoratorContent(Story, Theme.DARK);
 };
 
-export const storeDecorator = (Story: any, initialState: StateSchema) => {
+const defaultAsyncReducers: ReducerList = {
+    login: loginReducer
+};
+
+export const storeDecorator = (
+    Story: any,
+    initialState: StateSchema,
+    asyncReducers?: ReducerList
+) => {
     return (
-        <StoreProvider initialState={initialState}>
+        <StoreProvider
+            initialState={initialState}
+            asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
+        >
             <Story />
         </StoreProvider>
     );

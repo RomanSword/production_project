@@ -26,7 +26,7 @@ export const loginByUsername = createAsyncThunk<
 
         data = response.data;
     } catch (error) {
-        return thunkAPI.rejectWithValue(error.response.data.message);
+        return thunkAPI.rejectWithValue(error.response ? error.response.data.message : error.code);
     }
 
     localStorage.setItem(USER_LOCAL_STORAGE_KEY, JSON.stringify(data));
