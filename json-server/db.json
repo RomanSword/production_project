@@ -11,6 +11,6 @@
         { "id": "2", "text": "another comment about post 1", "postId": "1" }
     ],
     "users": [
-        { "username": "admin", "password": "admin" }
+        { "id": "1", "username": "admin", "password": "admin" }
     ]
 }
