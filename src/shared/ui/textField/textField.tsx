@@ -1,4 +1,4 @@
-import { ReactElement, HTMLInputTypeAttribute, ChangeEvent } from 'react';
+import { ReactElement, HTMLInputTypeAttribute, ChangeEvent, memo } from 'react';
 
 import { classNames } from 'shared/lib';
 
@@ -18,7 +18,7 @@ interface TextFieldProps {
     error?: string;
 }
 
-export const TextField = (props: TextFieldProps): ReactElement => {
+export const TextField = memo((props: TextFieldProps): ReactElement => {
     const {
         id,
         name,
@@ -65,4 +65,4 @@ export const TextField = (props: TextFieldProps): ReactElement => {
             <div className={cls.error}>{isErrorExist ? error : ''}</div>
         </label>
     );
-};
+});

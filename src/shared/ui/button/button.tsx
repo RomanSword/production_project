@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactElement } from 'react';
+import { ButtonHTMLAttributes, ReactElement, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FCCP } from 'app/types/declarations';
@@ -19,14 +19,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
 }
 
-export const Button: FCCP<ButtonProps> = ({
-    theme = ButtonTheme.PRIMARY,
-    isDisabled = false,
-    isLoading = false,
-    className,
-    children,
-    ...otherProps
-}): ReactElement => {
+export const Button: FCCP<ButtonProps> = memo((props): ReactElement => {
+    const {
+        theme = ButtonTheme.PRIMARY,
+        isDisabled = false,
+        isLoading = false,
+        className,
+        children,
+        ...otherProps
+    } = props;
+
     const { t } = useTranslation();
 
     return (
@@ -39,4 +41,4 @@ export const Button: FCCP<ButtonProps> = ({
             {isLoading ? `${t('loading')}...` : children}
         </button>
     );
-};
+});

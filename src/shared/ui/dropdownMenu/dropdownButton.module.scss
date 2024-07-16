@@ -16,12 +16,13 @@
     position: absolute;
     top: 40px;
     left: 0;
-    background-color: var(--bg-color);
-    color: var(--bg-color-inverted);
+    min-width: 80px;
+    border: 1px solid var(--bg-color-inverted);
     list-style-type: none;
     margin-block: 0;
     padding-inline-start: 0;
-    border: 1px solid var(--bg-color-inverted);
+    background-color: var(--bg-color);
+    color: var(--bg-color-inverted);
 }
 
 .option {

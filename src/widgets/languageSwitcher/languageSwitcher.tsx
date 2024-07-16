@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from 'shared/ui';
@@ -10,7 +10,7 @@ interface LanguageSwitcherProps {
     className?: string;
 }
 
-export const LanguageSwitcher = ({ className }: LanguageSwitcherProps): ReactElement => {
+export const LanguageSwitcher = memo(({ className }: LanguageSwitcherProps): ReactElement => {
     const { t, i18n } = useTranslation();
 
     const toggle = () => {
@@ -26,4 +26,4 @@ export const LanguageSwitcher = ({ className }: LanguageSwitcherProps): ReactEle
             {t('switcher.language')}
         </Button>
     );
-};
+});

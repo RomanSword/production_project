@@ -16,18 +16,18 @@ export type ReducerList = {
 type ReducerListEntry = [StateSchemaKey, Reducer];
 
 interface DynamicModuleLoaderProps {
-    reducerList: ReducerList;
+    reducers: ReducerList;
     removeAfterUnmount?: boolean;
 }
 
 export const DynamicModuleLoader: FCCP<DynamicModuleLoaderProps> = props => {
-    const { reducerList, removeAfterUnmount = true, children } = props;
+    const { reducers, removeAfterUnmount = true, children } = props;
 
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        Object.entries(reducerList).forEach(([name, reducer]: ReducerListEntry) => {
+        Object.entries(reducers).forEach(([name, reducer]: ReducerListEntry) => {
             // Добавляем чанк редюсир для логин формы
             store.reducerManager.add(name, reducer);
             // Руками пишем action в стор для удобства
@@ -36,7 +36,7 @@ export const DynamicModuleLoader: FCCP<DynamicModuleLoaderProps> = props => {
 
         return () => {
             if (removeAfterUnmount) {
-                Object.entries(reducerList).forEach(([name]: ReducerListEntry) => {
+                Object.entries(reducers).forEach(([name]: ReducerListEntry) => {
                     // Удаляем чанк из стора при выходе с формы
                     store.reducerManager.remove(name);
                     // Также пишем в стор про удаление чанка
@@ -44,7 +44,7 @@ export const DynamicModuleLoader: FCCP<DynamicModuleLoaderProps> = props => {
                 });
             }
         };
-    }, [dispatch, store.reducerManager, reducerList, removeAfterUnmount]);
+    }, [dispatch, store.reducerManager, reducers, removeAfterUnmount]);
 
     return children;
 };

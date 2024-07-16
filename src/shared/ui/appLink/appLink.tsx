@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, memo } from 'react';
 import { NavLink, LinkProps } from 'react-router-dom';
 
 import { FCCP } from 'app/types/declarations';
@@ -16,13 +16,9 @@ interface AppLinkProps extends LinkProps {
     theme?: AppLinkTheme;
 }
 
-export const AppLink: FCCP<AppLinkProps> = ({
-    to,
-    className,
-    children,
-    theme = AppLinkTheme.PRIMARY,
-    ...otherProps
-}): ReactElement => {
+export const AppLink: FCCP<AppLinkProps> = memo((props): ReactElement => {
+    const { to, className, children, theme = AppLinkTheme.PRIMARY, ...otherProps } = props;
+
     return (
         <NavLink
             to={to}
@@ -32,4 +28,4 @@ export const AppLink: FCCP<AppLinkProps> = ({
             {children}
         </NavLink>
     );
-};
+});

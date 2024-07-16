@@ -52,7 +52,7 @@ const LoginForm = memo((): ReactElement => {
     }, [dispatch, username, password]);
 
     return (
-        <DynamicModuleLoader reducerList={initialReducers}>
+        <DynamicModuleLoader reducers={initialReducers}>
             <form
                 className={cls.form}
                 onSubmit={onSubmit}

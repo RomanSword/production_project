@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, memo } from 'react';
 import { useSelector } from 'react-redux';
 
 import { getUserAuthData } from 'entities/user';
@@ -16,7 +16,7 @@ interface NavBarProps {
     className?: string;
 }
 
-export const NavBar = ({ className }: NavBarProps): ReactElement => {
+export const NavBar = memo(({ className }: NavBarProps): ReactElement => {
     const authData = useSelector(getUserAuthData);
 
     return (
@@ -32,4 +32,4 @@ export const NavBar = ({ className }: NavBarProps): ReactElement => {
             </div>
         </div>
     );
-};
+});

@@ -11,6 +11,16 @@
         { "id": "2", "text": "another comment about post 1", "postId": "1" }
     ],
     "users": [
-        { "id": "1", "username": "admin", "password": "admin" }
+        {
+            "id": "1",
+            "username": "admin",
+            "password": "admin",
+            "firstname": "Роман",
+            "lastname": "Белков",
+            "age": 28,
+            "city": "Penza",
+            "country": "Russia",
+            "avatar": "https://sun9-5.userapi.com/impf/c850436/v850436832/6d650/FPoB1Etgmng.jpg?size=300x300&quality=96&sign=b87f7bc7d5cb3a8f7db891d8b3b356c9&type=audio"
+        }
     ]
 }

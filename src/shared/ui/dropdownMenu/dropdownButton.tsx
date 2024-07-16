@@ -1,4 +1,4 @@
-import { ReactElement, MouseEvent, useState, useEffect } from 'react';
+import { ReactElement, MouseEvent, useState, useEffect, memo } from 'react';
 
 import { Button } from 'shared/ui';
 import { classNames } from 'shared/lib';
@@ -19,7 +19,7 @@ interface DropdownButtonProps {
     className?: string;
 }
 
-export const DropdownButton = (props: DropdownButtonProps): ReactElement => {
+export const DropdownButton = memo((props: DropdownButtonProps): ReactElement => {
     const {
         buttonText,
         options,
@@ -103,4 +103,4 @@ export const DropdownButton = (props: DropdownButtonProps): ReactElement => {
             )}
         </div>
     );
-};
+});

@@ -8,6 +8,7 @@ import { Theme, ThemeProvider } from 'app/providers/themeProvider';
 import i18nConfig from 'shared/config/i18n';
 import { ReducerList } from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
 import { loginReducer } from 'features/authByUsername/model/slice/loginSlice';
+import { profileReducer } from 'entities/profile';
 
 const I18nDecorator = (Story: any, context: any) => {
     const { locale } = context.globals;
@@ -57,7 +58,8 @@ export const themeDarkDecorator = (Story: any) => {
 };
 
 const defaultAsyncReducers: ReducerList = {
-    login: loginReducer
+    login: loginReducer,
+    profile: profileReducer
 };
 
 export const storeDecorator = (

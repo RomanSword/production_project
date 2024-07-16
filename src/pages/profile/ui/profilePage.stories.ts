@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
     pageDecorators,
+    storeDecorator,
     themeDarkDecorator,
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
@@ -20,10 +22,30 @@ export default meta;
 
 export const Light: Story = {
     args: {},
-    decorators: [themeLightDecorator]
+    decorators: [
+        themeLightDecorator,
+        (Story: any) =>
+            storeDecorator(Story, {
+                profile: {
+                    isLoading: false,
+                    error: '',
+                    readonly: false
+                }
+            })
+    ]
 };
 
 export const Dark: Story = {
     args: {},
-    decorators: [themeDarkDecorator]
+    decorators: [
+        themeDarkDecorator,
+        (Story: any) =>
+            storeDecorator(Story, {
+                profile: {
+                    isLoading: false,
+                    error: '',
+                    readonly: false
+                }
+            })
+    ]
 };

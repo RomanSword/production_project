@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, memo } from 'react';
 
 import { classNames } from 'shared/lib';
 
@@ -16,11 +16,9 @@ interface TextBlockProps {
     className?: string;
 }
 
-export const TextBlock = ({
-    type = TextBlockType.TEXT,
-    text = '',
-    className
-}: TextBlockProps): ReactElement => {
+export const TextBlock = memo((props: TextBlockProps): ReactElement => {
+    const { type = TextBlockType.TEXT, text = '', className } = props;
+
     if (!text) {
         return <div className={classNames([cls.container, className])} />;
     }
@@ -28,4 +26,4 @@ export const TextBlock = ({
     return (
         <div className={classNames([cls.container, cls[type] ?? cls[type], className])}>{text}</div>
     );
-};
+});
