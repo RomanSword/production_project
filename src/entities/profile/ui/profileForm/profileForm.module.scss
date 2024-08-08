@@ -1,0 +1,29 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 430px;
+}
+
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-right: 10px;
+    padding-left: 15px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.fieldset {
+    gap: 10px;
+}
+
+.formError {
+    height: 40px;
+    margin-bottom: 10px;
+}

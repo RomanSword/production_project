@@ -14,5 +14,7 @@
   "logout": "Выйти",
   "username": "Пользователь",
   "loading": "Загрузка",
-  "login_form_title": "Форма входа"
+  "login_form_title": "Форма входа",
+  "upload": "Загрузить",
+  "no_avatar": "Нет аватара"
 }

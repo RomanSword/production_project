@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
 
-import i18nConfig from '../../src/shared/config/i18n';
+import { initI18n } from '../../src/shared/config/i18n';
 
 import '../../src/app/styles/index.scss';
 
@@ -13,7 +13,7 @@ const preview: Preview = {
         }
     },
     parameters: {
-        i18n: i18nConfig,
+        i18n: initI18n(),
         controls: {
             matchers: {
                 color: /(background|color)$/i,

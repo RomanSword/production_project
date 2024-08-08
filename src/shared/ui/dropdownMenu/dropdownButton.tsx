@@ -51,7 +51,7 @@ export const DropdownButton = memo((props: DropdownButtonProps): ReactElement =>
         closeDropDownMenu();
     };
 
-    const onClickButton = (): void => {
+    const onClickButton = (event: MouseEvent<HTMLButtonElement>): void => {
         event.stopPropagation();
 
         setIsOpen(!isOpen);

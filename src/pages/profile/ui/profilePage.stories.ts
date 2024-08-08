@@ -20,32 +20,22 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
+const store = {
+    profile: {
+        isLoading: false,
+        error: '',
+        readonly: false,
+        data: {},
+        formData: {}
+    }
+};
+
 export const Light: Story = {
     args: {},
-    decorators: [
-        themeLightDecorator,
-        (Story: any) =>
-            storeDecorator(Story, {
-                profile: {
-                    isLoading: false,
-                    error: '',
-                    readonly: false
-                }
-            })
-    ]
+    decorators: [themeLightDecorator, (Story: any) => storeDecorator(Story, store)]
 };
 
 export const Dark: Story = {
     args: {},
-    decorators: [
-        themeDarkDecorator,
-        (Story: any) =>
-            storeDecorator(Story, {
-                profile: {
-                    isLoading: false,
-                    error: '',
-                    readonly: false
-                }
-            })
-    ]
+    decorators: [themeDarkDecorator, (Story: any) => storeDecorator(Story, store)]
 };

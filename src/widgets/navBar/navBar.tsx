@@ -1,8 +1,8 @@
 import { ReactElement, memo } from 'react';
 import { useSelector } from 'react-redux';
 
-import { getUserAuthData } from 'entities/user';
-import { LoginModalButton } from 'features/authByUsername';
+import { getUsername } from 'entities/user';
+import { LoginModalButton } from 'features/loginByUsername';
 import { classNames } from 'shared/lib';
 import { ThemeSwitcher } from 'widgets/themeSwitcher/themeSwitcher';
 import { LanguageSwitcher } from 'widgets/languageSwitcher/languageSwitcher';
@@ -17,7 +17,7 @@ interface NavBarProps {
 }
 
 export const NavBar = memo(({ className }: NavBarProps): ReactElement => {
-    const authData = useSelector(getUserAuthData);
+    const username = useSelector(getUsername);
 
     return (
         <div className={classNames([cls.navBar, className])}>
@@ -26,7 +26,7 @@ export const NavBar = memo(({ className }: NavBarProps): ReactElement => {
             </div>
 
             <div className={cls.innerBlock}>
-                {authData ? <UserMenu /> : <LoginModalButton />}
+                {username ? <UserMenu /> : <LoginModalButton />}
                 <LanguageSwitcher />
                 <ThemeSwitcher />
             </div>

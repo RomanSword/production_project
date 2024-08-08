@@ -31,6 +31,12 @@ export const Button: FCCP<ButtonProps> = memo((props): ReactElement => {
 
     const { t } = useTranslation();
 
+    if (!otherProps.onClick) {
+        <div className={classNames([cls.button, cls[theme] ?? cls[theme], className])}>
+            {isLoading ? `${t('loading')}...` : children}
+        </div>;
+    }
+
     return (
         <button
             {...otherProps}

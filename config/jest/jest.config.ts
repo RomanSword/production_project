@@ -4,7 +4,8 @@ import type { Config } from 'jest';
 
 const config: Config = {
     globals: {
-        __IS_DEV__: true
+        __IS_DEV__: true,
+        __BASE_URL__: ''
     },
     preset: 'ts-jest',
     verbose: true,

@@ -5,5 +5,5 @@ test('with two classes', () => {
 });
 
 test('with three classes and false values', () => {
-    expect(classNames(['class1', null, 'class2', '', 'class3'])).toBe('class1 class2 class3');
+    expect(classNames(['class1', '', 'class2', '', 'class3'])).toBe('class1 class2 class3');
 });

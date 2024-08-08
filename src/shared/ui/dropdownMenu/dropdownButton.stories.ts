@@ -21,10 +21,8 @@ const storyArgs = {
         { id: 'test2', text: 'option 2' },
         { id: 'test3', text: 'option 3' }
     ],
-    onOptionClick: (id: string) => {
-        console.log(id);
-    },
-    isOpened: true
+    isOpened: true,
+    onOptionClick: (id: string) => id
 };
 
 type Story = StoryObj<typeof meta>;

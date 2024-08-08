@@ -7,14 +7,16 @@ import { StoreProvider } from 'app/providers/storeProvider';
 import { ThemeProvider } from 'app/providers/themeProvider';
 
 import 'app/styles/index.scss';
-import 'shared/config/i18n';
+import { initI18n } from 'shared/config/i18n';
+
+initI18n();
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
 
 root.render(
-    <StoreProvider>
-        <BrowserRouter>
+    <BrowserRouter>
+        <StoreProvider>
             <ThemeProvider>
                 <AppWrapper>
                     <ErrorBoundary>
@@ -22,6 +24,6 @@ root.render(
                     </ErrorBoundary>
                 </AppWrapper>
             </ThemeProvider>
-        </BrowserRouter>
-    </StoreProvider>
+        </StoreProvider>
+    </BrowserRouter>
 );

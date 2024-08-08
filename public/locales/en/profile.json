@@ -1,3 +1,16 @@
 {
-  "page": "Profile"
+  "page": "Profile",
+  "title": "Profile form",
+  "firstname": "Firstname",
+  "lastname": "Lastname",
+  "age": "Age",
+  "country": "Country",
+  "city": "City",
+  "username": "Username",
+  "avatar": "Avatar",
+  "select_country": "Select country",
+  "select_city": "Select city",
+  "edit": "Edit",
+  "cancel": "Cancel",
+  "save": "Save"
 }

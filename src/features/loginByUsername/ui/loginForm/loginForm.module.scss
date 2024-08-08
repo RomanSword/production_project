@@ -1,0 +1,20 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formTitle {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.fieldset {
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.formError {
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+}

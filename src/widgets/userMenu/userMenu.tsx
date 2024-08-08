@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getUserAuthData, userActions } from 'entities/user';
+import { getUsername, userActions } from 'entities/user';
 import { DropdownButton } from 'shared/ui';
 import { AppRoutes, RoutePath } from 'shared/config';
 
@@ -13,7 +13,7 @@ const LOGOUT_OPTION = 'logout_option';
 export const UserMenu = (): ReactElement => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const authData = useSelector(getUserAuthData);
+    const username = useSelector(getUsername);
 
     const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ export const UserMenu = (): ReactElement => {
 
     return (
         <DropdownButton
-            buttonText={authData ? authData.username : 'username'}
+            buttonText={username ? username : 'username'}
             onOptionClick={onDropDownOptionClick}
             options={options}
         />

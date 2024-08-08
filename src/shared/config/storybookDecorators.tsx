@@ -5,21 +5,23 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
 import { Theme, ThemeProvider } from 'app/providers/themeProvider';
-import i18nConfig from 'shared/config/i18n';
+import { initI18nTest } from 'shared/config/i18nTest';
 import { ReducerList } from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
-import { loginReducer } from 'features/authByUsername/model/slice/loginSlice';
+import { loginReducer } from 'features/loginByUsername/model/slice/loginSlice';
 import { profileReducer } from 'entities/profile';
+
+const i18n = initI18nTest();
 
 const I18nDecorator = (Story: any, context: any) => {
     const { locale } = context.globals;
 
     useEffect(() => {
-        i18nConfig.changeLanguage(locale);
+        i18n.changeLanguage(locale);
     }, [locale]);
 
     return (
         <Suspense fallback={<div>Загрузка переводов...</div>}>
-            <I18nextProvider i18n={i18nConfig}>
+            <I18nextProvider i18n={i18n}>
                 <Story />
             </I18nextProvider>
         </Suspense>
@@ -46,6 +48,14 @@ const themeDecoratorContent = (Story: any, theme: Theme) => {
                 <Story />
             </ThemeProvider>
         </div>
+    );
+};
+
+const emptyStoreDecorator = (Story: any) => {
+    return (
+        <StoreProvider>
+            <Story />
+        </StoreProvider>
     );
 };
 
@@ -77,13 +87,7 @@ export const storeDecorator = (
     );
 };
 
-export const emptyStoreDecorator = (Story: any) => {
-    return (
-        <StoreProvider>
-            <Story />
-        </StoreProvider>
-    );
-};
+export const test = 'test';
 
 export const decorators = [I18nDecorator, routerDecorator];
 export const pageDecorators = [emptyStoreDecorator, I18nDecorator, routerDecorator];

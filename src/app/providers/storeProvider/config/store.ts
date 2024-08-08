@@ -1,32 +1,40 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import { Reducer, ReducersMapObject, configureStore } from '@reduxjs/toolkit';
+import { NavigateOptions, To } from 'react-router-dom';
 
-import { counterReducer } from 'entities/counter';
 import { userReducer } from 'entities/user';
+import { api } from 'shared/api/api';
 import { ReducerList } from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
 
-import { StateSchema } from './stateSchema';
+import { StateSchema, ThunkExtraArg } from './stateSchema';
 import { createReducerManager } from './reducerManager';
 
-export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducerList) {
+export function createReduxStore(
+    initialState?: StateSchema,
+    asyncReducers?: ReducerList,
+    navigate?: (to: To, options?: NavigateOptions) => void
+) {
     const rootReducers: ReducersMapObject = {
         ...asyncReducers,
-        counter: counterReducer,
         user: userReducer
     };
 
     const reducerManager = createReducerManager(rootReducers);
 
+    const extraArgument: ThunkExtraArg = {
+        api,
+        navigate
+    };
+
     const store = configureStore<StateSchema>({
-        reducer: reducerManager.reduce,
+        reducer: reducerManager.reduce as Reducer<StateSchema>,
         devTools: __IS_DEV__,
-        preloadedState: initialState
+        preloadedState: initialState,
+        // @ts-ignore
+        middleware: getDefaultMiddleware => getDefaultMiddleware({ thunk: { extraArgument } })
     });
 
-    // @ts-ignore
-    store.reducerManager = reducerManager;
-
-    return store;
+    return { ...store, reducerManager };
 }
 
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

@@ -5,6 +5,7 @@ const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 const middlewares = jsonServer.defaults();
+const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
 
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
@@ -26,13 +27,10 @@ server.use((req, res, next) => {
 });
 
 server.post('/login', (req, res) => {
-    const { username, password } = req.body;
-
-    const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
-
+    const { username } = req.body;
     const { users } = db;
 
-    const user = users.find(item => item.username === username && item.password === password);
+    const user = users.find(item => item.username === username);
 
     if (user) {
         delete user.password;
@@ -41,6 +39,14 @@ server.post('/login', (req, res) => {
     }
 
     return res.status(403).json({ message: 'request_payload_data_is_incorrect' });
+});
+
+server.get('/profile', (req, res) => {
+    const user = db.users[0];
+
+    delete user.password;
+
+    return res.json(user);
 });
 
 server.use(router);

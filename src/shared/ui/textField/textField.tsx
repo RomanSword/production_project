@@ -8,13 +8,15 @@ interface TextFieldProps {
     id: string;
     name: string;
     label: string;
+    autoComplete?: string;
     autoFocus?: boolean;
     testId?: string;
     type?: HTMLInputTypeAttribute;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     className?: string;
     touched?: boolean;
+    readOnly?: boolean;
     error?: string;
 }
 
@@ -24,12 +26,14 @@ export const TextField = memo((props: TextFieldProps): ReactElement => {
         name,
         label,
         testId,
+        autoComplete,
         autoFocus = false,
         type = 'text',
         value = '',
         onChange = () => {},
         className = '',
         touched = false,
+        readOnly = false,
         error = ''
     } = props;
 
@@ -60,6 +64,8 @@ export const TextField = memo((props: TextFieldProps): ReactElement => {
                 className={cls.input}
                 onChange={handleOnChange}
                 autoFocus={autoFocus}
+                autoComplete={autoComplete}
+                disabled={readOnly}
             />
 
             <div className={cls.error}>{isErrorExist ? error : ''}</div>

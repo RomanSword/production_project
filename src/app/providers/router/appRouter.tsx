@@ -2,7 +2,7 @@ import { ReactElement, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { RouteConfig } from 'shared/config';
-import { PageLoader } from 'widgets/pageLoader/pageLoader';
+import { PageLoader } from 'widgets';
 
 const AppRouter = (): ReactElement => {
     return (

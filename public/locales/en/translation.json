@@ -14,5 +14,7 @@
   "logout": "Log out",
   "username": "User name",
   "loading": "Loading",
-  "login_form_title": "Login form"
+  "login_form_title": "Login form",
+  "upload": "Upload",
+  "no_avatar": "No avatar"
 }

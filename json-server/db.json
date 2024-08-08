@@ -18,9 +18,15 @@
             "firstname": "Роман",
             "lastname": "Белков",
             "age": 28,
-            "city": "Penza",
-            "country": "Russia",
-            "avatar": "https://sun9-5.userapi.com/impf/c850436/v850436832/6d650/FPoB1Etgmng.jpg?size=300x300&quality=96&sign=b87f7bc7d5cb3a8f7db891d8b3b356c9&type=audio"
+            "city": "1",
+            "country": "1",
+            "avatar": {
+                "src": "https://sun9-5.userapi.com/impf/c850436/v850436832/6d650/FPoB1Etgmng.jpg?size=300x300&quality=96&sign=b87f7bc7d5cb3a8f7db891d8b3b356c9&type=audio",
+                "size": {
+                    "width": 300,
+                    "height": 300
+                }
+            }
         }
     ]
 }

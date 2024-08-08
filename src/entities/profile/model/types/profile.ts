@@ -1,18 +1,19 @@
-import { Country } from 'shared/const/common';
-
 export interface Profile {
-    username: string;
-    firstname: string;
-    lastname: string;
-    age: number;
-    city: string;
-    country: Country;
-    avatar: string;
+    username?: string;
+    firstname?: string;
+    lastname?: string;
+    avatar?: {
+        src?: string;
+    };
+    age?: number;
+    city?: string;
+    country?: string;
 }
 
 export interface ProfileSchema {
     isLoading: boolean;
     readonly: boolean;
-    data?: Profile;
+    data: Profile;
+    formData: Profile;
     error?: string;
 }
