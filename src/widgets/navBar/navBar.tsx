@@ -16,7 +16,7 @@ interface NavBarProps {
     className?: string;
 }
 
-export const NavBar = memo(({ className }: NavBarProps): ReactElement => {
+export const NavBar = memo(function NavBar({ className }: NavBarProps): ReactElement {
     const username = useSelector(getUsername);
 
     return (

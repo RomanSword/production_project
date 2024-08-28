@@ -4,12 +4,9 @@
   "firstname": "Firstname",
   "lastname": "Lastname",
   "age": "Age",
-  "country": "Country",
-  "city": "City",
   "username": "Username",
   "avatar": "Avatar",
-  "select_country": "Select country",
-  "select_city": "Select city",
+  "cover": "Cover",
   "edit": "Edit",
   "cancel": "Cancel",
   "save": "Save"

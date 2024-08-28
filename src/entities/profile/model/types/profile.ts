@@ -2,16 +2,18 @@ export interface Profile {
     username?: string;
     firstname?: string;
     lastname?: string;
-    avatar?: {
-        src?: string;
-    };
+    avatarSrc?: string;
+    coverSrc?: string;
     age?: number;
-    city?: string;
-    country?: string;
+    country_id?: string;
+    country?: { id: string; name: { ru: string; en: string } };
+    city_id?: string;
+    city?: { id: string; country_id: string; name: { ru: string; en: string } };
 }
 
 export interface ProfileSchema {
     isLoading: boolean;
+    isEdited: boolean;
     readonly: boolean;
     data: Profile;
     formData: Profile;

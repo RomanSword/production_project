@@ -15,7 +15,7 @@ interface SideBarProps {
     className?: string;
 }
 
-export const SideBar = memo(({ className }: SideBarProps): ReactElement => {
+export const SideBar = memo(function SideBar({ className }: SideBarProps): ReactElement {
     const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
 

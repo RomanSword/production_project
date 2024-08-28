@@ -1,23 +1,16 @@
-export const countries = [
-    { id: '1', text: 'Russia' },
-    { id: '2', text: 'Belarus' },
-    { id: '3', text: 'Ukraine' },
-    { id: '4', text: 'Kiev' },
-    { id: '5', text: 'Kazakhstan' },
-    { id: '6', text: 'Armenia' }
-];
-
-export const cities = [
-    { id: '1', text: 'Penza' },
-    { id: '2', text: 'Moscow' },
-    { id: '3', text: 'Minsk' },
-    { id: '4', text: 'Kiev' },
-    { id: '5', text: 'Astana' },
-    { id: '6', text: 'Erevan' }
-];
+import { CountryData } from 'entities/countries';
+import { CityData } from 'entities/city';
 
 export enum ErrorCodes {
     forbidden = 403,
     notFound = 404,
     unprocessableContent = 422
 }
+
+export type CountryChangeArgs = {
+    value: CountryData;
+};
+
+export type CityChangeArgs = {
+    value: CityData;
+};

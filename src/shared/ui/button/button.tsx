@@ -9,7 +9,8 @@ import cls from './button.module.scss';
 export enum ButtonTheme {
     PRIMARY = 'primary',
     CLEAR = 'clear',
-    OUTLINE = 'outline'
+    OUTLINE = 'outline',
+    OUTLINE_DANGER = 'outline_danger'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,7 +20,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
 }
 
-export const Button: FCCP<ButtonProps> = memo((props): ReactElement => {
+export const Button: FCCP<ButtonProps> = memo(function Button(props): ReactElement {
     const {
         theme = ButtonTheme.PRIMARY,
         isDisabled = false,

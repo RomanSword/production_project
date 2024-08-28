@@ -10,11 +10,28 @@
     font-size: var(--font-size-l);
 }
 
+.alignLeft {
+    text-align: left;
+}
+
+.alignRight {
+    text-align: right;
+}
+
+.alignCenter {
+    text-align: center;
+}
+
+.withBorder {
+    border-width: 2px;
+    border-style: solid;
+}
+
 .error {
     display: flex;
     align-items: center;
     color: var(--danger);
     background-color: var(--bg-color);
-    border: 2px solid var(--danger);
+    border-color: var(--danger);
     font-size: var(--font-size-m);
 }

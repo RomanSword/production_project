@@ -5,12 +5,16 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import { StateSchema, StoreProvider } from 'app/providers/storeProvider';
 import { Theme, ThemeProvider } from 'app/providers/themeProvider';
-import { initI18nTest } from 'shared/config/i18nTest';
-import { ReducerList } from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
-import { loginReducer } from 'features/loginByUsername/model/slice/loginSlice';
+
+import { loginReducer } from 'features/loginByUsername';
+
+import { initI18n } from 'shared/config/i18n';
+import { ReducerList } from 'shared/lib/components';
+
+import { fileReducer } from 'entities/file';
 import { profileReducer } from 'entities/profile';
 
-const i18n = initI18nTest();
+const i18n = initI18n();
 
 const I18nDecorator = (Story: any, context: any) => {
     const { locale } = context.globals;
@@ -69,7 +73,8 @@ export const themeDarkDecorator = (Story: any) => {
 
 const defaultAsyncReducers: ReducerList = {
     login: loginReducer,
-    profile: profileReducer
+    profile: profileReducer,
+    file: fileReducer
 };
 
 export const storeDecorator = (
@@ -86,8 +91,6 @@ export const storeDecorator = (
         </StoreProvider>
     );
 };
-
-export const test = 'test';
 
 export const decorators = [I18nDecorator, routerDecorator];
 export const pageDecorators = [emptyStoreDecorator, I18nDecorator, routerDecorator];

@@ -45,12 +45,33 @@
     &[data-error="false"] {
         border-color: var(--primary-color);
     }
+
+    &[type="number"]::-webkit-outer-spin-button,
+    &[type="number"]::-webkit-inner-spin-button {
+        appearance: none;
+    }
+
+    &[type="number"] {
+        appearance: textfield;
+
+        &:hover,
+        &:focus {
+            appearance: number-input;
+        }
+    }
+
+    &:disabled {
+        border-color: transparent;
+        border-bottom-color: var(--primary-color);
+        border-radius: 0;
+        cursor: text;
+    }
 }
   
 .error {
     display: block;
     height: 17px;
     padding-left: 5px;
-    font-size: --font-size-s;
+    font-size: var(--font-size-s);
     color: var(--danger);
 }

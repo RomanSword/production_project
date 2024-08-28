@@ -16,5 +16,12 @@
   "loading": "Loading",
   "login_form_title": "Login form",
   "upload": "Upload",
-  "no_avatar": "No avatar"
+  "no_image": "No image",
+  "error_while_loading": "An error occurred while loading data",
+  "try_again": "Try again",
+  "unsaved_edit": "There are unsaved edit, continue?",
+  "country": "Country",
+  "city": "City",
+  "select_value": "Select value",
+  "not_selected": "Not selected"
 }

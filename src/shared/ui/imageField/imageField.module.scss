@@ -1,3 +1,7 @@
+.container {
+    min-width: 360px;
+}
+
 .innerContainer {
     display: flex;
     align-items: center;
@@ -20,6 +24,12 @@
     &[data-error="false"] {
         border-color: var(--primary-color);
     }
+
+    &[data-readonly="true"] {
+        border-radius: 0;
+        border-color: transparent;
+        border-bottom-color: var(--primary-color);
+    }
 }
 
 .label {
@@ -35,33 +45,11 @@
     }
 }
 
-.imageContainer {
-    position: relative;
-}
-
-.deleteButton {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    z-index: 3;
-}
-
 .spinnerWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    height: 150px;
-}
-
-.uploadFileWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 150px;
-    height: 150px;
+    width: 70px;
 }
 
 .error {
@@ -72,12 +60,8 @@
     color: var(--danger);
 }
 
-.emptyAvatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+.emptyImage {
+    padding: 5px 7px;
     background-color: var(--image-background);
     font-size: var(--font-size-s);
 }

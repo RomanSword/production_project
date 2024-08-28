@@ -24,7 +24,8 @@ const store = {
     profile: {
         isLoading: false,
         error: '',
-        readonly: false,
+        isEdited: false,
+        readonly: true,
         data: {},
         formData: {}
     }

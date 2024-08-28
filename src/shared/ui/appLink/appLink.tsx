@@ -16,7 +16,7 @@ interface AppLinkProps extends LinkProps {
     theme?: AppLinkTheme;
 }
 
-export const AppLink: FCCP<AppLinkProps> = memo((props): ReactElement => {
+export const AppLink: FCCP<AppLinkProps> = memo(function AppLink(props): ReactElement {
     const { to, className, children, theme = AppLinkTheme.PRIMARY, ...otherProps } = props;
 
     return (

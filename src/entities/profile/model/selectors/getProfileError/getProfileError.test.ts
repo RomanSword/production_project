@@ -7,6 +7,7 @@ const profileState: StateSchema = {
     profile: {
         error,
         isLoading: false,
+        isEdited: false,
         readonly: false,
         formData: {},
         data: {}

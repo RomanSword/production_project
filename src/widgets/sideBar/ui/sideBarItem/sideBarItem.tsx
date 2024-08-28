@@ -6,7 +6,7 @@ import { AppLink, AppLinkTheme } from 'shared/ui';
 import cls from './sideBarItem.module.scss';
 import { SideBarItemType } from '../../model/items';
 
-export const SideBarItem = memo((props: SideBarItemType): ReactElement => {
+export const SideBarItem = memo(function SideBarItem(props: SideBarItemType): ReactElement {
     const { path, RouteIcon, text, collapsed = false } = props;
 
     return (

@@ -16,11 +16,11 @@ interface TextFieldProps {
     onChange?: (value: string) => void;
     className?: string;
     touched?: boolean;
-    readOnly?: boolean;
+    readonly?: boolean;
     error?: string;
 }
 
-export const TextField = memo((props: TextFieldProps): ReactElement => {
+export const TextField = memo(function TextField(props: TextFieldProps): ReactElement {
     const {
         id,
         name,
@@ -33,7 +33,7 @@ export const TextField = memo((props: TextFieldProps): ReactElement => {
         onChange = () => {},
         className = '',
         touched = false,
-        readOnly = false,
+        readonly = false,
         error = ''
     } = props;
 
@@ -65,7 +65,7 @@ export const TextField = memo((props: TextFieldProps): ReactElement => {
                 onChange={handleOnChange}
                 autoFocus={autoFocus}
                 autoComplete={autoComplete}
-                disabled={readOnly}
+                disabled={readonly}
             />
 
             <div className={cls.error}>{isErrorExist ? error : ''}</div>

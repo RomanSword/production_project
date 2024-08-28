@@ -7,8 +7,8 @@ import { LoadingWrapper } from './loadingWrapper/loadingWrapper';
 import { Modal } from './modal/modal';
 import { Portal } from './portal/portal';
 import { Selector } from './selector/selector';
-import { Spinner } from './spinner/spinner';
-import { TextBlock, TextBlockType } from './textBlock/textBlock';
+import { Spinner, SpinnerAppearance, SpinnerSize } from './spinner/spinner';
+import { TextBlock, TextBlockType, TextBlockAlign } from './textBlock/textBlock';
 import { TextField } from './textField/textField';
 
 export {
@@ -25,7 +25,10 @@ export {
     Portal,
     Selector,
     Spinner,
+    SpinnerAppearance,
+    SpinnerSize,
     TextBlock,
     TextBlockType,
+    TextBlockAlign,
     TextField
 };

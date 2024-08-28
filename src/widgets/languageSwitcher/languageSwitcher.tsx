@@ -10,7 +10,9 @@ interface LanguageSwitcherProps {
     className?: string;
 }
 
-export const LanguageSwitcher = memo(({ className }: LanguageSwitcherProps): ReactElement => {
+export const LanguageSwitcher = memo(function LanguageSwitcher({
+    className
+}: LanguageSwitcherProps): ReactElement {
     const { t, i18n } = useTranslation();
 
     const toggle = () => {

@@ -19,7 +19,9 @@ interface DropdownButtonProps {
     className?: string;
 }
 
-export const DropdownButton = memo((props: DropdownButtonProps): ReactElement => {
+export const DropdownButton = memo(function DropdownButton(
+    props: DropdownButtonProps
+): ReactElement {
     const {
         buttonText,
         options,

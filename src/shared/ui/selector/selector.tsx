@@ -1,5 +1,6 @@
 import { ReactElement, MouseEvent, useState, useEffect, memo } from 'react';
 
+import { Spinner } from 'shared/ui';
 import { classNames } from 'shared/lib';
 
 import ArrowUp from 'shared/assets/icons/arrow-up.svg';
@@ -18,22 +19,26 @@ interface SelectorProps {
     error?: string;
     placeholder?: string;
     selectedId?: string;
-    onOptionClick?: (id: string) => void;
+    selectedText?: string;
+    onOptionClick?: (item: string) => void;
     isOpened?: boolean;
-    readOnly?: boolean;
+    isLoading?: boolean;
+    readonly?: boolean;
     className?: string;
 }
 
-export const Selector = memo((props: SelectorProps): ReactElement => {
+export const Selector = memo(function Selector(props: SelectorProps): ReactElement {
     const {
         label,
         options,
         error,
         placeholder,
         selectedId,
+        selectedText,
         onOptionClick,
         isOpened = false,
-        readOnly = false,
+        isLoading = false,
+        readonly = false,
         className = ''
     } = props;
 
@@ -62,7 +67,7 @@ export const Selector = memo((props: SelectorProps): ReactElement => {
     const onClickButton = (event: MouseEvent<HTMLDivElement>): void => {
         event.stopPropagation();
 
-        if (readOnly) {
+        if (readonly) {
             return;
         }
 
@@ -87,14 +92,16 @@ export const Selector = memo((props: SelectorProps): ReactElement => {
         }
     };
 
-    let value = placeholder;
+    const isErrorExist = !!error;
     const selectedOption = options.find(item => item.id === selectedId);
 
-    if (selectedOption) {
+    let value = placeholder;
+
+    if (selectedText) {
+        value = selectedText;
+    } else if (selectedOption) {
         value = selectedOption.text;
     }
-
-    const isErrorExist = !!error;
 
     return (
         <div className={classNames([cls.container, className])}>
@@ -102,7 +109,7 @@ export const Selector = memo((props: SelectorProps): ReactElement => {
                 className={cls.innerContainer}
                 onClick={onClickButton}
                 data-error={isErrorExist}
-                data-readonly={readOnly}
+                data-readonly={readonly}
             >
                 <span
                     className={cls.label}
@@ -110,7 +117,7 @@ export const Selector = memo((props: SelectorProps): ReactElement => {
                 >
                     {label}
 
-                    {readOnly ? <></> : isOpen ? <ArrowUp /> : <ArrowDown />}
+                    {readonly ? <></> : isOpen ? <ArrowUp /> : <ArrowDown />}
                 </span>
 
                 <span className={cls.value}>{value}</span>
@@ -121,15 +128,20 @@ export const Selector = memo((props: SelectorProps): ReactElement => {
                     className={cls.options}
                     onClick={onOptionsClick}
                 >
-                    {options.map(option => (
-                        <li
-                            key={option.id}
-                            data-id={option.id}
-                            className={cls.option}
-                        >
-                            {option.text}
-                        </li>
-                    ))}
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
+                        options.map(option => (
+                            <li
+                                key={option.id}
+                                data-id={option.id}
+                                data-is-selected={option.id === selectedId}
+                                className={cls.option}
+                            >
+                                {option.text}
+                            </li>
+                        ))
+                    )}
                 </ul>
             )}
 

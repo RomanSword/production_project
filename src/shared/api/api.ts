@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { USER_LOCAL_STORAGE_KEY } from 'shared/const/localstorage';
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: __BASE_URL__
 });
 
@@ -25,5 +25,3 @@ api.interceptors.request.use(function (config) {
 
     return config;
 });
-
-export { api };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Reducer } from 'redux';
 import { useStore } from 'react-redux';
 
 import { FCCP } from 'app/types/declarations';
@@ -6,8 +7,7 @@ import {
     ReduxStoreWithManager,
     StateSchemaKey
 } from 'app/providers/storeProvider/config/stateSchema';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Reducer } from 'redux';
+import { useAppDispatch } from 'shared/lib/hooks';
 
 export type ReducerList = {
     [name in StateSchemaKey]?: Reducer;

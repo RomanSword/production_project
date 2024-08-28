@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { Button, TextBlock, TextBlockType, TextField } from 'shared/ui';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks';
+import { DynamicModuleLoader, ReducerList } from 'shared/lib/components';
 
 import {
     getLoginUsername,
@@ -15,16 +16,12 @@ import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 
 import cls from './loginForm.module.scss';
-import {
-    DynamicModuleLoader,
-    ReducerList
-} from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
 
 const initialReducers: ReducerList = {
     login: loginReducer
 };
 
-const LoginForm = memo((): ReactElement => {
+const LoginForm = memo(function LoginForm(): ReactElement {
     const dispatch = useAppDispatch<any>();
 
     const { t } = useTranslation();
@@ -92,6 +89,7 @@ const LoginForm = memo((): ReactElement => {
                     className={cls.formError}
                     type={TextBlockType.ERROR}
                     text={error}
+                    bordered={true}
                 />
 
                 <Button

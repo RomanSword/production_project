@@ -4,6 +4,9 @@ import { Action, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/tool
 
 import { ProfileSchema } from 'entities/profile';
 import { UserSchema } from 'entities/user';
+import { FileSchema } from 'entities/file';
+import { CountriesSchema } from 'entities/countries';
+import { CitiesSchema } from 'entities/city';
 
 import { LoginSchema } from 'features/loginByUsername';
 
@@ -13,6 +16,9 @@ export interface StateSchema {
     // Асинхронные редюсеры
     login?: LoginSchema;
     profile?: ProfileSchema;
+    file?: FileSchema;
+    countries?: CountriesSchema;
+    cities?: CitiesSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
@@ -37,4 +43,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
     rejectValue: T;
     extra: ThunkExtraArg;
+    state: StateSchema;
 }

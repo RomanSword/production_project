@@ -4,8 +4,8 @@
     border-radius: 10px;
 
     &[data-size="small"] {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
 
     &[data-size="medium"] {
@@ -28,7 +28,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(255 255 255 / 80%);
+    background-color: var(--loading-background);
     z-index: 1;
 }
 
@@ -39,4 +39,23 @@
     width: inherit;
     height: inherit;
     color: var(--primary-color);
+}
+
+.actionsContainer {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.action {
+    width: 30px;
+    height: 30px;
+}
+
+.previewImage {
+    width: 100%;
+    height: 100%;
 }

@@ -4,9 +4,9 @@ import { NavigateOptions, To } from 'react-router-dom';
 
 import { userReducer } from 'entities/user';
 import { api } from 'shared/api/api';
-import { ReducerList } from 'shared/lib/components/dynamicModuleLoader/dynamicModuleLoader';
+import { ReducerList } from 'shared/lib/components';
 
-import { StateSchema, ThunkExtraArg } from './stateSchema';
+import { StateSchema } from './stateSchema';
 import { createReducerManager } from './reducerManager';
 
 export function createReduxStore(
@@ -21,17 +21,20 @@ export function createReduxStore(
 
     const reducerManager = createReducerManager(rootReducers);
 
-    const extraArgument: ThunkExtraArg = {
-        api,
-        navigate
-    };
-
     const store = configureStore<StateSchema>({
         reducer: reducerManager.reduce as Reducer<StateSchema>,
         devTools: __IS_DEV__,
         preloadedState: initialState,
         // @ts-ignore
-        middleware: getDefaultMiddleware => getDefaultMiddleware({ thunk: { extraArgument } })
+        middleware: getDefaultMiddleware =>
+            getDefaultMiddleware({
+                thunk: {
+                    extraArgument: {
+                        api,
+                        navigate
+                    }
+                }
+            })
     });
 
     return { ...store, reducerManager };

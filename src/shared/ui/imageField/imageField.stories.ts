@@ -22,7 +22,10 @@ const args = {
     src: '',
     alt: 'test',
     label: 'test',
-    changeSrc: (src: string) => src
+    changeSrc: function (src: string) {
+        console.log(src);
+    },
+    clearSrc: function () {}
 };
 
 export const Light: Story = {
