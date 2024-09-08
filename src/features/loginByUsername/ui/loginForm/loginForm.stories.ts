@@ -20,6 +20,11 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
+const formData = {
+    username: 'test',
+    password: 'test'
+};
+
 export const Light: Story = {
     args: {},
     decorators: [
@@ -27,8 +32,7 @@ export const Light: Story = {
         (Story: any) =>
             storeDecorator(Story, {
                 login: {
-                    username: 'test',
-                    password: 'test',
+                    formData,
                     isLoading: false,
                     error: ''
                 }
@@ -43,8 +47,7 @@ export const LightError: Story = {
         (Story: any) =>
             storeDecorator(Story, {
                 login: {
-                    username: 'test',
-                    password: 'test',
+                    formData,
                     isLoading: false,
                     error: 'incorrect_data'
                 }
@@ -59,8 +62,7 @@ export const LightIsLoading: Story = {
         (Story: any) =>
             storeDecorator(Story, {
                 login: {
-                    username: 'test',
-                    password: 'test',
+                    formData,
                     isLoading: true,
                     error: ''
                 }
@@ -75,8 +77,7 @@ export const Dark: Story = {
         (Story: any) =>
             storeDecorator(Story, {
                 login: {
-                    username: 'test',
-                    password: 'test',
+                    formData,
                     isLoading: false,
                     error: ''
                 }
@@ -91,8 +92,7 @@ export const DarkError: Story = {
         (Story: any) =>
             storeDecorator(Story, {
                 login: {
-                    username: 'test',
-                    password: 'test',
+                    formData,
                     isLoading: false,
                     error: 'incorrect_data'
                 }
@@ -107,8 +107,7 @@ export const DarkIsLoading: Story = {
         (Story: any) =>
             storeDecorator(Story, {
                 login: {
-                    username: 'test',
-                    password: 'test',
+                    formData,
                     isLoading: true,
                     error: ''
                 }

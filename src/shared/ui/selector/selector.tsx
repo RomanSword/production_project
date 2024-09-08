@@ -64,7 +64,13 @@ export const Selector = memo(function Selector(props: SelectorProps): ReactEleme
         closeDropDownMenu();
     };
 
-    const onClickButton = (event: MouseEvent<HTMLDivElement>): void => {
+    const onClick = (event: MouseEvent<HTMLDivElement>): void => {
+        if (document.onclick) {
+            // eslint-disable-next-line
+            // @ts-ignore
+            document.onclick();
+        }
+
         event.stopPropagation();
 
         if (readonly) {
@@ -107,7 +113,7 @@ export const Selector = memo(function Selector(props: SelectorProps): ReactEleme
         <div className={classNames([cls.container, className])}>
             <div
                 className={cls.innerContainer}
-                onClick={onClickButton}
+                onClick={onClick}
                 data-error={isErrorExist}
                 data-readonly={readonly}
             >
@@ -129,7 +135,9 @@ export const Selector = memo(function Selector(props: SelectorProps): ReactEleme
                     onClick={onOptionsClick}
                 >
                     {isLoading ? (
-                        <Spinner />
+                        <div className={cls.spinnerWrapper}>
+                            <Spinner />
+                        </div>
                     ) : (
                         options.map(option => (
                             <li

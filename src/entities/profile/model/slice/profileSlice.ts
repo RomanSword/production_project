@@ -12,7 +12,9 @@ export const initialState: ProfileSchema = {
     isEdited: false,
     isLoading: false,
     formData: {},
-    data: {}
+    data: {},
+    error: '',
+    validationErrors: {}
 };
 
 export const profileSlice = createSlice({
@@ -29,6 +31,12 @@ export const profileSlice = createSlice({
                 ...state.formData,
                 [key]: value
             };
+
+            if (state.validationErrors?.[key]) {
+                delete state.validationErrors?.[key];
+
+                state.validationErrors = { ...state.validationErrors };
+            }
 
             state.isEdited = JSON.stringify(state.data) !== JSON.stringify(state.formData);
         },
@@ -75,20 +83,23 @@ export const profileSlice = createSlice({
                 state.isLoading = false;
                 state.error = action.payload;
             })
+
             .addCase(updateProfileData.pending, state => {
                 state.error = '';
+                state.validationErrors = {};
                 state.isLoading = true;
-                state.readonly = true;
-                state.isEdited = false;
             })
             .addCase(updateProfileData.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.data = action.payload;
                 state.formData = action.payload;
+                state.readonly = true;
+                state.isEdited = false;
             })
             .addCase(updateProfileData.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.payload;
+                state.error = action.payload?.error;
+                state.validationErrors = action.payload?.validationErrors;
             });
     }
 });

@@ -8,20 +8,12 @@
   "error.title": "An unexpected error occurred",
   "error.go_to_main": "Go to main page",
   "error.reset": "Reload page",
-  "login": "Login",
-  "email": "Email",
-  "password": "Password",
+  "login": "Log in",
   "logout": "Log out",
   "username": "User name",
   "loading": "Loading",
   "login_form_title": "Login form",
-  "upload": "Upload",
   "no_image": "No image",
   "error_while_loading": "An error occurred while loading data",
-  "try_again": "Try again",
-  "unsaved_edit": "There are unsaved edit, continue?",
-  "country": "Country",
-  "city": "City",
-  "select_value": "Select value",
-  "not_selected": "Not selected"
+  "unsaved_edit": "There are unsaved edit, continue?"
 }

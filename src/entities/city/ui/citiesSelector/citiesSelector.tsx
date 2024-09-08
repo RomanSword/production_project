@@ -34,11 +34,13 @@ export const CitiesSelector = memo(function CitiesSelector(
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const dispatch = useAppDispatch<any>();
-    const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation('form');
 
     useEffect(() => {
         if (countryId) {
-            dispatch(fetchCitiesData({ country_id: countryId }));
+            if (__PROJECT__ !== 'storybook') {
+                dispatch(fetchCitiesData({ country_id: countryId }));
+            }
         }
     }, [dispatch, countryId]);
 

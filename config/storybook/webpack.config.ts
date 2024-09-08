@@ -34,7 +34,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.plugins!.push(
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(true),
-            __BASE_URL__: JSON.stringify('https://testapi.ru')
+            __BASE_URL__: JSON.stringify('https://testapi.ru'),
+            __PROJECT__: JSON.stringify('storybook')
         })
     );
 

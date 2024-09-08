@@ -1,12 +1,13 @@
 import { useTranslation } from 'react-i18next';
 
-import { classNames } from 'shared/lib';
+import { IValidationErrors, classNames } from 'shared/lib';
 import { Button, ButtonTheme, TextBlock, TextBlockType } from 'shared/ui';
 
 import cls from './profileFormHeader.module.scss';
 
 interface ProfileFormProps {
     readonly: boolean;
+    errors: IValidationErrors;
     isLoading?: boolean;
     isEdited?: boolean;
     startEdit: () => void;
@@ -16,15 +17,19 @@ interface ProfileFormProps {
 }
 
 export const ProfileFormHeader = (props: ProfileFormProps) => {
-    const { readonly, isLoading, isEdited, startEdit, applyEdit, cancelEdit, className } = props;
+    const { readonly, errors, isLoading, isEdited, startEdit, applyEdit, cancelEdit, className } =
+        props;
 
-    const { t } = useTranslation('profile');
+    const { t: tProfile } = useTranslation('profile');
+    const { t: tForm } = useTranslation('form');
+
+    const isSaveButtonDisabled = Object.keys(errors).length > 0 || !isEdited;
 
     return (
         <div className={classNames([cls.container, className])}>
             <TextBlock
                 type={TextBlockType.TITLE}
-                text={t('title')}
+                text={tProfile('title')}
             />
 
             <div className={cls.actions}>
@@ -34,7 +39,7 @@ export const ProfileFormHeader = (props: ProfileFormProps) => {
                         onClick={startEdit}
                         isLoading={isLoading}
                     >
-                        {t('edit')}
+                        {tForm('edit')}
                     </Button>
                 )}
 
@@ -42,9 +47,9 @@ export const ProfileFormHeader = (props: ProfileFormProps) => {
                     <Button
                         data-testid='profile-apply-edit-button'
                         onClick={applyEdit}
-                        isDisabled={!isEdited}
+                        isDisabled={isSaveButtonDisabled}
                     >
-                        {t('save')}
+                        {tForm('save')}
                     </Button>
                 )}
 
@@ -54,7 +59,7 @@ export const ProfileFormHeader = (props: ProfileFormProps) => {
                         theme={ButtonTheme.OUTLINE_DANGER}
                         onClick={cancelEdit}
                     >
-                        {t('cancel')}
+                        {tForm('cancel')}
                     </Button>
                 )}
             </div>

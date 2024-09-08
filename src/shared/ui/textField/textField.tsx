@@ -13,9 +13,9 @@ interface TextFieldProps {
     testId?: string;
     type?: HTMLInputTypeAttribute;
     value?: string | number;
+    isRequired?: boolean;
     onChange?: (value: string) => void;
     className?: string;
-    touched?: boolean;
     readonly?: boolean;
     error?: string;
 }
@@ -30,14 +30,14 @@ export const TextField = memo(function TextField(props: TextFieldProps): ReactEl
         autoFocus = false,
         type = 'text',
         value = '',
+        isRequired = false,
         onChange = () => {},
         className = '',
-        touched = false,
         readonly = false,
         error = ''
     } = props;
 
-    const isErrorExist = touched && !!error;
+    const isErrorExist = !!error;
 
     const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         onChange(event.target.value);
@@ -54,6 +54,8 @@ export const TextField = memo(function TextField(props: TextFieldProps): ReactEl
                 data-error={isErrorExist}
             >
                 {label}
+
+                {!readonly && isRequired && <span className={cls.requiredSymbol}>*</span>}
             </span>
 
             <input

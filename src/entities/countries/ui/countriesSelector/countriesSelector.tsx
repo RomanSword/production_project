@@ -33,10 +33,12 @@ export const CountriesSelector = memo(function CountriesSelector(
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const dispatch = useAppDispatch<any>();
-    const { t, i18n } = useTranslation();
+    const { t, i18n } = useTranslation('form');
 
     useEffect(() => {
-        dispatch(fetchCountriesData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchCountriesData());
+        }
     }, [dispatch]);
 
     const isLoading = useSelector(getCountriesIsLoading);

@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
     pageDecorators,
+    storeDecorator,
     themeDarkDecorator,
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
@@ -26,4 +28,19 @@ export const Light: Story = {
 export const Dark: Story = {
     args: {},
     decorators: [themeDarkDecorator]
+};
+
+export const LightAuth: Story = {
+    args: {},
+    decorators: [
+        themeLightDecorator,
+        (Story: any) =>
+            storeDecorator(Story, {
+                user: {
+                    authData: {
+                        username: 'test'
+                    }
+                }
+            })
+    ]
 };

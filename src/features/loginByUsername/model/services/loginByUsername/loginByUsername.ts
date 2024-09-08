@@ -6,38 +6,46 @@ import { ThunkConfig } from 'app/providers/storeProvider';
 import { User, userActions } from 'entities/user';
 
 import { RoutePath } from 'shared/config';
-import { getErrorMessage } from 'shared/lib';
+import { IValidationErrors, getErrorMessage } from 'shared/lib';
 
-interface LoginByUsernameProps {
-    username: string;
-    password: string;
-}
+import { LoginData } from '../../types/loginSchema';
+import { getLoginFormData } from '../../selectors';
+import { validateLoginForm } from '../validateLoginForm/validateLoginForm';
 
-export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
-    'login/loginByUsername',
-    async (authData, thunkApi) => {
-        const { extra, dispatch, rejectWithValue } = thunkApi;
+export const loginByUsername = createAsyncThunk<
+    User,
+    void,
+    ThunkConfig<{ error?: string; validationErrors?: IValidationErrors }>
+>('login/loginByUsername', async (_, thunkApi) => {
+    const { extra, dispatch, rejectWithValue, getState } = thunkApi;
 
-        let data: User = {};
+    const data: LoginData = getLoginFormData(getState());
 
-        try {
-            const response = await extra.api.post<User>('/login', authData);
+    const validationErrors = validateLoginForm(data);
 
-            if (!response.data) {
-                return rejectWithValue('Пришли пустые данные пользователя!');
-            }
-
-            data = response.data;
-        } catch (error: unknown) {
-            return rejectWithValue(getErrorMessage(error as AxiosError<Error>));
-        }
-
-        dispatch(userActions.setAuthData(data));
-
-        if (extra.navigate) {
-            extra.navigate(RoutePath.profile);
-        }
-
-        return data;
+    if (Object.keys(validationErrors).length) {
+        return rejectWithValue({ validationErrors });
     }
-);
+
+    let response = null;
+
+    try {
+        response = await extra.api.post<User>('/login', data);
+
+        if (!response.data) {
+            return rejectWithValue({ error: 'Пришли пустые данные пользователя!' });
+        }
+    } catch (error: unknown) {
+        const err = error as AxiosError<Error>;
+
+        return rejectWithValue({ error: getErrorMessage(err) });
+    }
+
+    dispatch(userActions.setAuthData(data));
+
+    if (extra.navigate) {
+        extra.navigate(RoutePath.profile);
+    }
+
+    return response.data;
+});

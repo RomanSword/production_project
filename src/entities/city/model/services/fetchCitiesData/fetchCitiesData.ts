@@ -17,17 +17,23 @@ export const fetchCitiesData = createAsyncThunk<
 >('cities/fetchCitiesData', async (params, thunkApi) => {
     const { extra, rejectWithValue } = thunkApi;
 
+    let response = null;
+
     try {
-        const response = await extra.api.get<CityData[]>('/cities', {
+        response = await extra.api.get<CityData[]>('/cities', {
             params: {
                 country_id: params.country_id
             }
         });
 
-        return response.data;
+        if (!response.data) {
+            return rejectWithValue('Пришли пустые данные городов!');
+        }
     } catch (error: unknown) {
         const err = error as AxiosError<Error>;
 
         return rejectWithValue(getErrorMessage(err));
     }
+
+    return response.data;
 });

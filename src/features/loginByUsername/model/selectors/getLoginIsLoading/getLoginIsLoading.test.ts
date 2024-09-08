@@ -4,7 +4,7 @@ import { getLoginIsLoading } from './getLoginIsLoading';
 
 const isLoading = true;
 const loginState: StateSchema = {
-    login: { username: '', password: '', isLoading, error: '' }
+    login: { formData: { username: '', password: '' }, isLoading, error: '' }
 };
 
 describe('selector getLoginIsLoading', () => {

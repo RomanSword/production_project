@@ -7,7 +7,7 @@ import HTMLWebpackPlugin from 'html-webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstance[] {
-    const { paths, isDev, baseURL } = options;
+    const { paths, isDev, baseURL, project } = options;
 
     const plugins = [
         new webpack.ProgressPlugin(),
@@ -18,7 +18,8 @@ export function buildPlugins(options: BuildOptions): webpack.WebpackPluginInstan
         }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(options.isDev),
-            __BASE_URL__: JSON.stringify(baseURL)
+            __BASE_URL__: JSON.stringify(baseURL),
+            __PROJECT__: JSON.stringify(project)
         })
     ];
 

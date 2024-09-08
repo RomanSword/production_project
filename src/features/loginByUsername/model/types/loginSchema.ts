@@ -1,6 +1,13 @@
+import { IValidationErrors } from 'shared/lib';
+
+export interface LoginData {
+    username?: string;
+    password?: string;
+}
+
 export interface LoginSchema {
-    username: string;
-    password: string;
+    formData: LoginData;
     isLoading: boolean;
     error?: string;
+    validationErrors?: IValidationErrors;
 }

@@ -4,7 +4,7 @@ import { getCitiesError } from './getCitiesError';
 
 const error = 'error';
 const citiesState: StateSchema = {
-    countries: {
+    cities: {
         error,
         isLoading: false,
         data: []

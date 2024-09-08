@@ -1,13 +1,4 @@
 {
   "page": "Profile",
-  "title": "Profile form",
-  "firstname": "Firstname",
-  "lastname": "Lastname",
-  "age": "Age",
-  "username": "Username",
-  "avatar": "Avatar",
-  "cover": "Cover",
-  "edit": "Edit",
-  "cancel": "Cancel",
-  "save": "Save"
+  "title": "Profile form"
 }

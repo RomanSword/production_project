@@ -47,7 +47,7 @@ export const UploadFileButton = memo(function UploadFileButton(
     const error = useSelector(getFileError);
     const isLoading = useSelector(getFileIsLoading);
 
-    const { t } = useTranslation();
+    const { t } = useTranslation('form');
     const inputRef = useRef<HTMLInputElement>(null);
 
     const onChange = async (event: ChangeEvent<HTMLInputElement>) => {

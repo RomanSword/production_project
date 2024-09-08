@@ -3,6 +3,7 @@ export { getProfileError } from './model/selectors/getProfileError/getProfileErr
 export { getProfileReadonly } from './model/selectors/getProfileReadonly/getProfileReadonly';
 export { getProfileIsLoading } from './model/selectors/getProfileIsLoading/getProfileIsLoading';
 export { getProfileIsEdited } from './model/selectors/getProfileIsEdited/getProfileIsEdited';
+export { getProfileValidationErrors } from './model/selectors/getProfileValidationErrors/getProfileValidationErrors';
 
 export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData';
 export { updateProfileData } from './model/services/updateProfileData/updateProfileData';

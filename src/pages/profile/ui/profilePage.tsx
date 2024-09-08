@@ -16,7 +16,8 @@ import {
     profileReducer,
     ProfileFormBody,
     ProfileFormHeader,
-    updateProfileData
+    updateProfileData,
+    getProfileValidationErrors
 } from 'entities/profile';
 import { fileReducer } from 'entities/file';
 
@@ -37,12 +38,16 @@ const ProfilePage = (): ReactElement => {
 
     const formData = useSelector(getProfileFormData);
     const error = useSelector(getProfileError);
+    const validationErrors = useSelector(getProfileValidationErrors);
     const readonly = useSelector(getProfileReadonly);
     const isLoading = useSelector(getProfileIsLoading);
     const isEdited = useSelector(getProfileIsEdited);
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
+
         profileActions.cancelEdit();
 
         return () => {
@@ -106,6 +111,7 @@ const ProfilePage = (): ReactElement => {
             >
                 <ProfileFormHeader
                     readonly={readonly}
+                    errors={validationErrors}
                     isLoading={isLoading}
                     isEdited={isEdited}
                     startEdit={startEdit}
@@ -114,6 +120,7 @@ const ProfilePage = (): ReactElement => {
                 />
                 <ProfileFormBody
                     formData={formData}
+                    errors={validationErrors}
                     readonly={readonly}
                     isLoading={isLoading}
                     onChangeField={onChangeFormDataField}

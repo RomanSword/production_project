@@ -37,6 +37,7 @@
     align-items: center;
     gap: 10px;
     font-size: var(--font-size-m);
+    margin-right: 15px;
 
     &[data-error="true"] {
         color: var(--danger);
@@ -76,6 +77,15 @@
     &[data-is-selected="true"] {
         background-color: var(--image-background);
     }
+}
+
+.spinnerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
 }
 
 .error {

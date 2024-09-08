@@ -6,47 +6,49 @@ import { Button, TextBlock, TextBlockType, TextField } from 'shared/ui';
 import { useAppDispatch } from 'shared/lib/hooks';
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components';
 
-import {
-    getLoginUsername,
-    getLoginPassword,
-    getLoginIsLoading,
-    getLoginError
-} from '../../model/selectors';
+import { getLoginIsLoading, getLoginError, getLoginFormData } from '../../model/selectors';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
+import { getLoginValidationErrors } from '../../model/selectors/getLoginValidationErrors/getLoginValidationErrors';
 
 import cls from './loginForm.module.scss';
+import { getErrorTranslation } from 'shared/lib';
 
 const initialReducers: ReducerList = {
     login: loginReducer
 };
 
 const LoginForm = memo(function LoginForm(): ReactElement {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const dispatch = useAppDispatch<any>();
 
     const { t } = useTranslation();
-    const username = useSelector(getLoginUsername);
-    const password = useSelector(getLoginPassword);
+    const { t: tForm } = useTranslation('form');
+
+    const formData = useSelector(getLoginFormData);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
+    const validationErrors = useSelector(getLoginValidationErrors);
 
     const onChangeUsername = useCallback(
         (value: string) => {
-            dispatch(loginActions.setUsername(value));
+            dispatch(loginActions.setDataField({ key: 'username', value }));
         },
         [dispatch]
     );
 
     const onChangePassword = useCallback(
         (value: string) => {
-            dispatch(loginActions.setPassword(value));
+            dispatch(loginActions.setDataField({ key: 'password', value }));
         },
         [dispatch]
     );
 
     const onSubmit = useCallback((): void => {
-        dispatch(loginByUsername({ username, password }));
-    }, [dispatch, username, password]);
+        dispatch(loginByUsername());
+    }, [dispatch]);
+
+    const isSubmitDisabled = Object.keys(validationErrors).length !== 0 || error !== '';
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
@@ -63,25 +65,25 @@ const LoginForm = memo(function LoginForm(): ReactElement {
                 <fieldset className={cls.fieldset}>
                     <TextField
                         id='login_username'
-                        testId='login-username-text-field'
-                        label={t('username')}
+                        label={tForm('username')}
                         name='username'
                         type='text'
                         autoComplete='username'
-                        value={username}
+                        value={formData.username}
                         autoFocus={true}
                         onChange={onChangeUsername}
+                        error={getErrorTranslation(validationErrors.username, tForm)}
                     />
 
                     <TextField
                         id='login_password'
-                        testId='username-password-text-field'
-                        label={t('password')}
+                        label={tForm('password')}
                         name='password'
                         type='password'
                         autoComplete='current-password'
-                        value={password}
+                        value={formData.password}
                         onChange={onChangePassword}
+                        error={getErrorTranslation(validationErrors.password, tForm)}
                     />
                 </fieldset>
 
@@ -96,6 +98,7 @@ const LoginForm = memo(function LoginForm(): ReactElement {
                     data-testid='login-submit-button'
                     onClick={onSubmit}
                     isLoading={isLoading}
+                    isDisabled={isSubmitDisabled}
                 >
                     {t('login')}
                 </Button>

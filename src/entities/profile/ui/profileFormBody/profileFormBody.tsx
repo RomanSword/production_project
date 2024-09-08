@@ -4,7 +4,7 @@ import { CountriesSelector } from 'entities/countries';
 import { CitiesSelector } from 'entities/city';
 import { Profile } from 'entities/profile';
 
-import { classNames } from 'shared/lib';
+import { IValidationErrors, classNames, getErrorTranslation } from 'shared/lib';
 import { ImageField, TextField } from 'shared/ui';
 
 import { CityChangeArgs, CountryChangeArgs } from 'shared/const/common';
@@ -14,6 +14,7 @@ import cls from './profileFormBody.module.scss';
 interface IProps {
     readonly: boolean;
     formData: Profile;
+    errors: IValidationErrors;
     onChangeField: (key: string, value: string) => void;
     onChangeCountryField: (args: CountryChangeArgs) => void;
     onChangeCityField: (args: CityChangeArgs) => void;
@@ -25,6 +26,7 @@ export const ProfileFormBody = (props: IProps) => {
     const {
         readonly,
         formData,
+        errors,
         isLoading,
         onChangeField,
         onChangeCountryField,
@@ -32,15 +34,15 @@ export const ProfileFormBody = (props: IProps) => {
         className
     } = props;
 
-    const { t } = useTranslation('profile');
+    const { t: tForm } = useTranslation('form');
 
     return (
         <fieldset className={classNames([cls.fieldset, className])}>
             <ImageField
                 src={formData.avatarSrc}
                 isLoadingSrc={isLoading}
-                alt={t('avatar')}
-                label={t('avatar')}
+                alt={tForm('avatar')}
+                label={tForm('avatar')}
                 changeSrc={value => onChangeField('avatarSrc', value)}
                 clearSrc={() => onChangeField('avatarSrc', '')}
                 readonly={readonly}
@@ -48,8 +50,8 @@ export const ProfileFormBody = (props: IProps) => {
             <ImageField
                 src={formData.coverSrc}
                 isLoadingSrc={isLoading}
-                alt={t('cover')}
-                label={t('cover')}
+                alt={tForm('cover')}
+                label={tForm('cover')}
                 changeSrc={value => onChangeField('coverSrc', value)}
                 clearSrc={() => onChangeField('coverSrc', '')}
                 readonly={readonly}
@@ -57,35 +59,43 @@ export const ProfileFormBody = (props: IProps) => {
             <TextField
                 id='profile_username'
                 name='username'
-                label={t('username')}
+                label={tForm('username')}
                 value={formData.username}
                 onChange={value => onChangeField('username', value)}
                 readonly={readonly}
+                isRequired={true}
+                error={getErrorTranslation(errors.username, tForm)}
             />
             <TextField
                 id='profile_firstname'
                 name='firstname'
-                label={t('firstname')}
+                label={tForm('firstname')}
                 value={formData.firstname}
                 onChange={value => onChangeField('firstname', value)}
                 readonly={readonly}
+                isRequired={true}
+                error={getErrorTranslation(errors.firstname, tForm)}
             />
             <TextField
                 id='profile_lastname'
                 name='lastname'
-                label={t('lastname')}
+                label={tForm('lastname')}
                 value={formData.lastname}
                 onChange={value => onChangeField('lastname', value)}
                 readonly={readonly}
+                isRequired={true}
+                error={getErrorTranslation(errors.lastname, tForm)}
             />
             <TextField
                 id='profile_age'
                 name='age'
                 type='number'
-                label={t('age')}
+                label={tForm('age')}
                 value={formData.age}
                 onChange={value => onChangeField('age', value)}
                 readonly={readonly}
+                isRequired={true}
+                error={getErrorTranslation(errors.age, tForm)}
             />
             <CountriesSelector
                 onOptionClick={onChangeCountryField}

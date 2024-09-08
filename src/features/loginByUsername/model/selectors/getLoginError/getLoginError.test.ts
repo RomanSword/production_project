@@ -4,7 +4,7 @@ import { getLoginError } from './getLoginError';
 
 const error = 'error';
 const loginState: StateSchema = {
-    login: { username: '', password: '', isLoading: false, error }
+    login: { formData: { username: '', password: '' }, isLoading: false, error }
 };
 
 describe('selector getLoginError', () => {

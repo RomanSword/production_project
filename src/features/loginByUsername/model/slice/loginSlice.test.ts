@@ -1,19 +1,28 @@
 import { LoginSchema } from '../types/loginSchema';
 import { loginReducer, loginActions } from './loginSlice';
 
-const loginState: LoginSchema = { username: '123', password: '123', isLoading: false };
 const newValue = '321';
+const loginState: LoginSchema = {
+    formData: { username: '123', password: '123' },
+    isLoading: false
+};
 
 describe('test slice login', () => {
     test('test set username', () => {
-        const result = loginReducer(loginState, loginActions.setUsername(newValue));
+        const result = loginReducer(
+            loginState,
+            loginActions.setDataField({ key: 'username', value: newValue })
+        );
 
-        expect(result.username).toBe(newValue);
+        expect(result.formData.username).toBe(newValue);
     });
 
     test('test set password', () => {
-        const result = loginReducer(loginState, loginActions.setPassword(newValue));
+        const result = loginReducer(
+            loginState,
+            loginActions.setDataField({ key: 'password', value: newValue })
+        );
 
-        expect(result.password).toBe(newValue);
+        expect(result.formData.password).toBe(newValue);
     });
 });

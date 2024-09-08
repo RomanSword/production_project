@@ -24,6 +24,11 @@
     }
 }
 
+.requiredSymbol {
+    margin-left: 5px;
+    color: var(--danger);
+}
+
 .input {
     width: 100%;
     min-height: 40px;

@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import {
     pageDecorators,
-    storeDecorator,
     themeDarkDecorator,
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
@@ -30,17 +29,7 @@ const args = {
 
 export const Light: Story = {
     args,
-    decorators: [
-        themeLightDecorator,
-        (Story: any) =>
-            storeDecorator(Story, {
-                file: {
-                    data: {},
-                    isLoading: false,
-                    error: ''
-                }
-            })
-    ]
+    decorators: [themeLightDecorator]
 };
 
 export const LightDisabled: Story = {

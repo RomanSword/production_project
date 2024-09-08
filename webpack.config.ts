@@ -23,6 +23,7 @@ export default (env: BuildEnv): webpack.Configuration => {
         port,
         host,
         baseURL,
-        isDev: mode === 'development'
+        isDev: mode === 'development',
+        project: 'frontend'
     });
 };

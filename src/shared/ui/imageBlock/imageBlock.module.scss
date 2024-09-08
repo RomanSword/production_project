@@ -53,6 +53,10 @@
 .action {
     width: 30px;
     height: 30px;
+
+    path {
+        fill: var(--primary-color);
+    }
 }
 
 .previewImage {

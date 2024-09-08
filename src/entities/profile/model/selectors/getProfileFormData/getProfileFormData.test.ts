@@ -29,6 +29,6 @@ describe('selector getProfileFormDataAge', () => {
     });
 
     test('should work with empty state', () => {
-        expect(getProfileFormData({})).toEqual(undefined);
+        expect(Object.keys(getProfileFormData({})).length).toEqual(0);
     });
 });

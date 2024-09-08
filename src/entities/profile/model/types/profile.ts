@@ -1,3 +1,5 @@
+import { IValidationErrors } from 'shared/lib';
+
 export interface Profile {
     username?: string;
     firstname?: string;
@@ -18,4 +20,5 @@ export interface ProfileSchema {
     data: Profile;
     formData: Profile;
     error?: string;
+    validationErrors?: IValidationErrors;
 }

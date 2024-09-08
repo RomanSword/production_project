@@ -11,14 +11,20 @@ export const fetchCountriesData = createAsyncThunk<CountryData[], void, ThunkCon
     async (_, thunkApi) => {
         const { extra, rejectWithValue } = thunkApi;
 
-        try {
-            const response = await extra.api.get<CountryData[]>('/countries');
+        let response = null;
 
-            return response.data;
+        try {
+            response = await extra.api.get<CountryData[]>('/countries');
+
+            if (!response.data) {
+                return rejectWithValue('Пришли пустые данные стран!');
+            }
         } catch (error: unknown) {
             const err = error as AxiosError<Error>;
 
             return rejectWithValue(getErrorMessage(err));
         }
+
+        return response.data;
     }
 );
