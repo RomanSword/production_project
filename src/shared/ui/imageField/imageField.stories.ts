@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import {
-    decorators,
+    pageDecorators,
     themeDarkDecorator,
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
@@ -9,7 +9,7 @@ import {
 import { ImageField } from './imageField';
 
 const meta = {
-    decorators,
+    decorators: pageDecorators,
     title: 'shared/ImageField',
     component: ImageField
 } satisfies Meta<typeof ImageField>;
