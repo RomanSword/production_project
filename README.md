@@ -9,6 +9,7 @@
 
 ### How to install
 From root dir do in terminal:
+
     $ yarn
 
 ### How to launch locally
