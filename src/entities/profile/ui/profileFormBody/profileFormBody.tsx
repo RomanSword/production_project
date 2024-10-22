@@ -19,6 +19,8 @@ interface IProps {
     onChangeCountryField: (args: CountryChangeArgs) => void;
     onChangeCityField: (args: CityChangeArgs) => void;
     isLoading?: boolean;
+    withLoadingAvatar?: boolean;
+    withLoadingCover?: boolean;
     className?: string;
 }
 
@@ -31,7 +33,9 @@ export const ProfileFormBody = (props: IProps) => {
         onChangeField,
         onChangeCountryField,
         onChangeCityField,
-        className
+        className,
+        withLoadingAvatar = true,
+        withLoadingCover = true
     } = props;
 
     const { t: tForm } = useTranslation('form');
@@ -45,6 +49,7 @@ export const ProfileFormBody = (props: IProps) => {
                 label={tForm('avatar')}
                 changeSrc={value => onChangeField('avatarSrc', value)}
                 clearSrc={() => onChangeField('avatarSrc', '')}
+                withLoadingImage={withLoadingAvatar}
                 readonly={readonly}
             />
             <ImageField
@@ -54,6 +59,7 @@ export const ProfileFormBody = (props: IProps) => {
                 label={tForm('cover')}
                 changeSrc={value => onChangeField('coverSrc', value)}
                 clearSrc={() => onChangeField('coverSrc', '')}
+                withLoadingImage={withLoadingCover}
                 readonly={readonly}
             />
             <TextField

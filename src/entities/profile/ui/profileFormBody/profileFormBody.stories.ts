@@ -23,6 +23,9 @@ export default meta;
 
 const args = {
     readonly: false,
+    isLoading: false,
+    withLoadingAvatar: false,
+    withLoadingCover: false,
     formData: {
         ...profileData
     },

@@ -36,8 +36,11 @@ Optionally you can do:
     - Launch unit tests
     $ yarn test:unit
 
-    - Launch ui/screenshot tests
+    - Initial launch ui/screenshot tests
     $ yarn test:ui
+
+    - Launch ui/screenshot tests with refs
+    $ test:ui:ci
 
     - Accept diffs in test screenshots
     $ test:ui:ok

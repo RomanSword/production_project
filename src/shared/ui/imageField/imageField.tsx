@@ -19,6 +19,7 @@ interface ImageFieldProps {
     readonly?: boolean;
     error?: string;
     isLoadingSrc?: boolean;
+    withLoadingImage?: boolean;
     className?: string;
 }
 
@@ -33,6 +34,7 @@ export const ImageField = memo(function ImageField(props: ImageFieldProps): Reac
         touched = false,
         readonly = false,
         isLoadingSrc = false,
+        withLoadingImage = true,
         className
     } = props;
 
@@ -53,6 +55,7 @@ export const ImageField = memo(function ImageField(props: ImageFieldProps): Reac
                 src={src}
                 alt={alt}
                 withPreview={true}
+                withLoadingImage={withLoadingImage}
                 readonly={readonly}
                 onDelete={clearSrc}
             />

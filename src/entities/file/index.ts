@@ -1,4 +1,4 @@
-export { FileSchema } from './model/types/file';
+export type { FileSchema } from './model/types/file';
 
 export { fileReducer } from './model/slice/fileSlice';
 

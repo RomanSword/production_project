@@ -18,6 +18,7 @@ export enum ImageBlockSize {
 interface ImageBlockProps extends ImgHTMLAttributes<HTMLImageElement> {
     size?: ImageBlockSize;
     withPreview?: boolean;
+    withLoadingImage?: boolean;
     readonly?: boolean;
     onDelete?: () => void;
     className?: string;
@@ -29,6 +30,7 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
         alt = '',
         size = ImageBlockSize.MEDIUM,
         withPreview = false,
+        withLoadingImage = true,
         readonly = false,
         onDelete,
         className
@@ -51,7 +53,8 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
             className={classNames([cls.container, className])}
             data-size={size}
         >
-            {isLoading &&
+            {withLoadingImage &&
+                isLoading &&
                 (size === ImageBlockSize.SMALL ? (
                     <div className={cls.spinnerWrapper}></div>
                 ) : (

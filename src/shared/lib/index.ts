@@ -3,9 +3,5 @@ export { getErrorMessage } from './getErrorMessage/getErrorMessage';
 export { processFormWithConfig } from './validation/processFormWithConfig';
 export { getErrorTranslation } from './validation/getErrorTranslation';
 
-export {
-    IFormData,
-    IValidationErrors,
-    ValidationConditions,
-    ValidationConfig
-} from './validation/interface';
+export type { IFormData, IValidationErrors, ValidationConfig } from './validation/interface';
+export { ValidationConditions } from './validation/interface';
