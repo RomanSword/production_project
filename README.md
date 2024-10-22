@@ -39,11 +39,14 @@ Optionally you can do:
     - Initial launch ui/screenshot tests
     $ yarn test:ui
 
-    - Launch ui/screenshot tests with refs
-    $ test:ui:ci
+    - Build storybook for ci tests
+    $ yarn storybook:build
+
+    - Launch ui/screenshot tests with refs and with builded storybook
+    $ yarn test:ui:ci
 
     - Accept diffs in test screenshots
-    $ test:ui:ok
+    $ yarn test:ui:ok
 
     - Generate visual report about ui diffs (report.html will be in .loki dir) (need to launch by some live server)
     $ yarn visual:report:html
