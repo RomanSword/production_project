@@ -32,7 +32,7 @@ const store = {
     }
 };
 
-export const Light: Story = {
+export const LightReadOnly: Story = {
     args: {},
     decorators: [themeLightDecorator, (Story: any) => storeDecorator(Story, store)]
 };
@@ -65,7 +65,7 @@ export const LightErrors: Story = {
     ]
 };
 
-export const Dark: Story = {
+export const DarkReadOnly: Story = {
     args: {},
     decorators: [themeDarkDecorator, (Story: any) => storeDecorator(Story, store)]
 };
