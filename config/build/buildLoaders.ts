@@ -4,6 +4,7 @@ import { BuildOptions } from './types/config';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { buildImageLoader } from './loaders/buildImageLoader';
 import { buildSvgLoader } from './loaders/buildSvgLoader';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const imageLoader = buildImageLoader();
@@ -17,17 +18,7 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     };
 
     const cssLoader = buildCssLoader(options.isDev);
-
-    const babelLoader = {
-        test: /\.(ts|tsx)$/,
-        exclude: [/node_modules/, /json-server/],
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env']
-            }
-        }
-    };
+    const babelLoader = buildBabelLoader(options.isDev);
 
     return [imageLoader, svgLoader, babelLoader, tsLoader, cssLoader];
 }

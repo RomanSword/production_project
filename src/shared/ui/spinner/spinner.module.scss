@@ -8,9 +8,9 @@
     animation: rotation 1s linear infinite;
 
     &[data-appearance="themed"] {
-        border-top-color: var(--bg-color-inverted);
-        border-right-color: var(--bg-color-inverted);
-        border-left-color: var(--bg-color-inverted);
+        border-top-color: var(--secondary-bg-color);
+        border-right-color: var(--secondary-bg-color);
+        border-left-color: var(--secondary-bg-color);
     }
 
     &[data-appearance="alwaysBlack"] {

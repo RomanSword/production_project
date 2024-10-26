@@ -5,17 +5,13 @@
     padding: 20px 30px;
 
     svg {
-        fill: var(--bg-color);
+        fill: var(--primary-color);
     }
 
     &[aria-current="page"] {
         color: var(--primary-color);
-        background-color: var(--bg-color);
+        background-color: var(--primary-bg-color);
         opacity: 0.9;
-
-        svg {
-            fill: var(--bg-color-inverted);
-        }
     }
 
     &:hover {

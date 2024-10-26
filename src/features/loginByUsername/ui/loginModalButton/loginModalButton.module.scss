@@ -1,8 +1,8 @@
 .button {
     height: 40px;
     padding: 4px 8px;
-    background-color: var(--bg-color);
-    color: var(--bg-color-inverted);
-    border: 1px solid var(--bg-color-inverted);
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-bg-color);
+    border: 1px solid var(--secondary-bg-color);
     box-sizing: border-box;
 }

@@ -38,10 +38,10 @@
     border-radius: 5px;
     margin-bottom: 4px;
     box-sizing: border-box;
-    color: var(--bg-color-inverted);
+    color: var(--primary-color);
     font-size: var(--font-size-m);
     text-align: right;
-    background-color: var(--bg-color);
+    background-color: var(--primary-bg-color);
 
     &[data-error="true"] {
         border-color: var(--danger);

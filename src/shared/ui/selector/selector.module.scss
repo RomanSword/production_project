@@ -11,7 +11,7 @@
     border-style: solid;
     border-radius: 5px;
     margin-bottom: 4px;
-    background-color: var(--bg-color);
+    background-color: var(--primary-bg-color);
     
     &[data-error="true"] {
         border-color: var(--danger);
@@ -53,12 +53,12 @@
     top: 44px;
     left: 0;
     width: 100%;
-    border: 1px solid var(--bg-color-inverted);
+    border: 1px solid var(--secondary-bg-color);
     list-style-type: none;
     margin-block: 0;
     padding-inline-start: 0;
-    background-color: var(--bg-color);
-    color: var(--bg-color-inverted);
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-bg-color);
     z-index: 9999;
 }
 
