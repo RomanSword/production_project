@@ -4,7 +4,8 @@ import { getUsername } from './getUsername';
 
 const userState: StateSchema = {
     user: {
-        authData: { username: '', id: '' }
+        authData: { username: '', id: '' },
+        _inited: true
     }
 };
 

@@ -6,7 +6,7 @@ import { ProfilePage } from 'pages/profile';
 import { NotFoundPage } from 'pages/notFound';
 import { AccessDeniedPage } from 'pages/accessDenied';
 
-type AppRoutesProps = RouteProps & {
+export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
 };
 

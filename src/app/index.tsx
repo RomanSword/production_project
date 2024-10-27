@@ -1,12 +1,12 @@
 import { ReactElement, Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FCC } from 'app/types/declarations';
 import { AppRouter } from 'app/providers/router';
 import { useTheme } from 'app/providers/themeProvider';
 import { classNames } from 'shared/lib';
 import { NavBar, SideBar } from 'widgets';
-import { userActions } from 'entities/user';
+import { getUserInited, userActions } from 'entities/user';
 
 export const AppWrapper: FCC = ({ children }): ReactElement => {
     const { theme } = useTheme();
@@ -16,6 +16,7 @@ export const AppWrapper: FCC = ({ children }): ReactElement => {
 
 export function AppLayout(): ReactElement {
     const dispatch = useDispatch();
+    const inited = useSelector(getUserInited);
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
@@ -27,7 +28,7 @@ export function AppLayout(): ReactElement {
 
             <div className='content-wrapper'>
                 <SideBar />
-                <AppRouter />
+                {inited && <AppRouter />}
             </div>
         </Suspense>
     );

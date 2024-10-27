@@ -3,7 +3,7 @@ import { USER_LOCAL_STORAGE_KEY } from 'shared/const/localstorage';
 import { UserSchema } from '../types/user';
 import { userReducer, userActions } from './userSlice';
 
-const loginState: UserSchema = { authData: { id: '', username: '' } };
+const loginState: UserSchema = { authData: { id: '', username: '' }, _inited: true };
 const newValue = { id: '123', username: '123' };
 
 describe('test slice user', () => {

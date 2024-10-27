@@ -39,7 +39,8 @@ export const LightAuth: Story = {
                 user: {
                     authData: {
                         username: 'test'
-                    }
+                    },
+                    _inited: true
                 }
             })
     ]
