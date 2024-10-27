@@ -10,7 +10,7 @@
 ### How to install
 From root dir do in terminal:
     - Will install all needed node modules
-    $ yarn
+    $ yarn install
 
 ### How to launch locally
 From root dir do in terminal:
