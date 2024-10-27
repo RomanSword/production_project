@@ -9,18 +9,24 @@
 
 ### How to install
 From root dir do in terminal:
-    - Will install all needed node modules
-    $ yarn install
+
+    - Install all needed node modules
+    $ yarn
 
 ### How to launch locally
 From root dir do in terminal:
+
     - Launch backend on Json-Server
     $ yarn serve:jsonServer
 
     - Launch frontend on webpack
     $ yarn serve:dev
 
+    - Launch frontend and backend at once
+    $ yarn serve
+
 Optionally you can do:
+
     - Launch Storybook
     $ yarn storybook:dev
 
