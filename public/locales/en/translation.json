@@ -3,6 +3,7 @@
   "link.main": "Main",
   "link.help": "Help",
   "link.profile": "Profile",
+  "link.articles": "Articles",
   "error.not_found": "Page not found",
   "error.access_denied": "Access denied",
   "error.title": "An unexpected error occurred",

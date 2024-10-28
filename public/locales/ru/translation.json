@@ -3,6 +3,7 @@
   "link.main": "Главная",
   "link.help": "Помощь",
   "link.profile": "Профиль",
+  "link.articles": "Статьи",
   "error.not_found": "Страница не найдена",
   "error.access_denied": "Отказано в доступе",
   "error.title": "Произошла непредвиденная ошибка",
