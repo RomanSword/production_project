@@ -7,16 +7,20 @@ import CloseIcon from 'shared/assets/icons/close.svg';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 
 import { Button } from '../button/button';
+
 import cls from './imageBlock.module.scss';
 
 export enum ImageBlockSize {
     SMALL = 'small',
     MEDIUM = 'medium',
-    LARGE = 'large'
+    LARGE = 'large',
+    XLARGE = 'xlarge',
+    FULL_WIDTH = 'fullWidth'
 }
 
 interface ImageBlockProps extends ImgHTMLAttributes<HTMLImageElement> {
     size?: ImageBlockSize;
+    isRound?: boolean;
     withPreview?: boolean;
     withLoadingImage?: boolean;
     readonly?: boolean;
@@ -29,6 +33,7 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
         src,
         alt = '',
         size = ImageBlockSize.MEDIUM,
+        isRound = false,
         withPreview = false,
         withLoadingImage = true,
         readonly = false,
@@ -50,15 +55,25 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
 
     return (
         <div
-            className={classNames([cls.container, className])}
+            className={classNames([cls.container, isRound ? cls.containerRound : '', className])}
             data-size={size}
         >
             {withLoadingImage &&
                 isLoading &&
                 (size === ImageBlockSize.SMALL ? (
-                    <div className={cls.spinnerWrapper}></div>
+                    <div
+                        className={classNames([
+                            cls.spinnerWrapper,
+                            isRound ? cls.containerRound : ''
+                        ])}
+                    ></div>
                 ) : (
-                    <div className={cls.spinnerWrapper}>
+                    <div
+                        className={classNames([
+                            cls.spinnerWrapper,
+                            isRound ? cls.containerRound : ''
+                        ])}
+                    >
                         <Spinner appearance={SpinnerAppearance.ALWAYS_BLACK} />
                     </div>
                 ))}
@@ -104,7 +119,7 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
                 loading='lazy'
                 ref={imageRef}
                 onLoad={onLoad}
-                className={cls.image}
+                className={classNames([cls.image, isRound ? cls.containerRound : ''])}
             />
         </div>
     );

@@ -3,68 +3,65 @@ import { useTranslation } from 'react-i18next';
 
 import { FCCP } from 'app/types/declarations';
 import { classNames } from 'shared/lib';
-import {
-    Button,
-    Spinner,
-    SpinnerAppearance,
-    TextBlock,
-    TextBlockAlign,
-    TextBlockType
-} from 'shared/ui';
+import { Button, Spinner, TextBlock, TextBlockAlign, TextBlockType } from 'shared/ui';
 
 import cls from './loadingWrapper.module.scss';
 
 interface LoadingWrapperProps {
     isLoading: boolean;
-    contentClassName: string;
+    renderSkeleton?: () => ReactElement;
     error?: string;
     onReload?: () => void;
     className?: string;
 }
 
 export const LoadingWrapper: FCCP<LoadingWrapperProps> = (props): ReactElement => {
-    const { isLoading, contentClassName, error = '', onReload, className, children } = props;
+    const { isLoading, renderSkeleton, error = '', onReload, className, children } = props;
 
-    const { t } = useTranslation();
+    const { t } = useTranslation('form');
 
-    return (
-        <div className={classNames([cls.container, className])}>
-            {isLoading && (
+    let content = children;
+
+    if (isLoading) {
+        if (renderSkeleton) {
+            content = renderSkeleton();
+        } else {
+            content = (
                 <div className={cls.spinnerWrapper}>
-                    <Spinner appearance={SpinnerAppearance.ALWAYS_BLACK} />
+                    <Spinner />
                 </div>
-            )}
+            );
+        }
+    } else if (error) {
+        content = (
+            <div className={cls.errorWrapper}>
+                <div className={cls.errorInnerBlock}>
+                    <span className={cls.error}>
+                        <TextBlock
+                            type={TextBlockType.TITLE_MAIN}
+                            align={TextBlockAlign.CENTER}
+                            text={`${t('error_while_loading')}:`}
+                        />
 
-            {error && (
-                <div className={cls.errorWrapper}>
-                    <div className={cls.errorInnerBlock}>
-                        <span className={cls.error}>
-                            <TextBlock
-                                type={TextBlockType.TITLE}
-                                align={TextBlockAlign.CENTER}
-                                text={`${t('error_while_loading')}:`}
-                            />
+                        <TextBlock
+                            type={TextBlockType.ERROR}
+                            align={TextBlockAlign.CENTER}
+                            text={error}
+                        />
+                    </span>
 
-                            <TextBlock
-                                type={TextBlockType.ERROR}
-                                align={TextBlockAlign.CENTER}
-                                text={error}
-                            />
-                        </span>
-
-                        {onReload && (
-                            <Button
-                                data-testid='loading-wrapper-reload-button'
-                                onClick={onReload}
-                            >
-                                {t('try_again')}
-                            </Button>
-                        )}
-                    </div>
+                    {onReload && (
+                        <Button
+                            data-testid='loading-wrapper-reload-button'
+                            onClick={onReload}
+                        >
+                            {t('try_again')}
+                        </Button>
+                    )}
                 </div>
-            )}
+            </div>
+        );
+    }
 
-            <div className={contentClassName}>{children}</div>
-        </div>
-    );
+    return <div className={classNames([cls.container, className])}>{content}</div>;
 };

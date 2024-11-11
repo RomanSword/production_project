@@ -15,5 +15,6 @@
     "upload": "Upload",
     "cancel": "Cancel",
     "save": "Save",
-    "try_again": "Try again"
+    "try_again": "Try again",
+    "error_while_loading": "An error occurred while loading data"
 }

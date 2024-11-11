@@ -56,7 +56,7 @@ export const PrimaryDarkText: Story = {
 export const PrimaryLightTitle: Story = {
     args: {
         text: loremText,
-        type: TextBlockType.TITLE
+        type: TextBlockType.TITLE_MAIN
     },
     decorators: [themeLightDecorator]
 };
@@ -64,7 +64,7 @@ export const PrimaryLightTitle: Story = {
 export const PrimaryDarkTitle: Story = {
     args: {
         text: loremText,
-        type: TextBlockType.TITLE
+        type: TextBlockType.TITLE_MAIN
     },
     decorators: [themeDarkDecorator]
 };

@@ -15,6 +15,6 @@ describe('selector getUserInited', () => {
     });
 
     test('should work with empty state', () => {
-        expect(getUserInited({})).toEqual('');
+        expect(getUserInited({})).toEqual(false);
     });
 });

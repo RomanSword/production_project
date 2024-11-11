@@ -27,14 +27,14 @@ export const DynamicModuleLoader: FCCP<DynamicModuleLoaderProps> = props => {
 
     useEffect(() => {
         Object.entries(reducers).forEach(([name, reducer]) => {
-            // Добавляем чанк редюсир для логин формы
+            // Добавляем чанк редюсер для логин формы
             store.reducerManager.add(name as StateSchemaKey, reducer);
             // Руками пишем action в стор для удобства
             dispatch({ type: `@INIT ${name} reducer` });
         });
 
         // Не даем даже смаунтиться дочерним элементам, чтобы не пропустить
-        // вперед лишние асинк санки
+        // вперед лишние асинк танки
         changeIsLoading(false);
 
         return () => {

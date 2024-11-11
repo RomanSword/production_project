@@ -107,7 +107,7 @@ const ProfilePage = (): ReactElement => {
                 error={error}
                 isLoading={isLoading}
                 onReload={reloadFormData}
-                contentClassName={cls.container}
+                className={cls.container}
             >
                 <ProfileFormHeader
                     readonly={readonly}

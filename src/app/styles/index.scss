@@ -24,9 +24,13 @@ body {
     display: flex;
     width: 100%;
     flex: 1;
+    overflow-y: hidden;
 }
 
 .content {
+    display: flex;
+    justify-content: center;
     flex-grow: 1;
     padding: 20px;
+    overflow-y: auto;
 }

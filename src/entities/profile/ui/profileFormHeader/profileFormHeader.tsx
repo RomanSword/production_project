@@ -28,7 +28,7 @@ export const ProfileFormHeader = (props: ProfileFormProps) => {
     return (
         <div className={classNames([cls.container, className])}>
             <TextBlock
-                type={TextBlockType.TITLE}
+                type={TextBlockType.TITLE_MAIN}
                 text={tProfile('title')}
             />
 

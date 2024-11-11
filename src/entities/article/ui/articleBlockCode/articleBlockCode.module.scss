@@ -1,0 +1,19 @@
+.articleBlockCode {
+    position: relative;    
+}
+  
+
+.action {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    path {
+        fill: var(--primary-color);
+    }
+
+    &:hover {
+        opacity: 0.75;
+    }
+}

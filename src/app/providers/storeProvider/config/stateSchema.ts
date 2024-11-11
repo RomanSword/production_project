@@ -2,11 +2,12 @@ import { AxiosInstance } from 'axios';
 import { To, NavigateOptions } from 'react-router-dom';
 import { Action, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 
-import { ProfileSchema } from 'entities/profile';
-import { UserSchema } from 'entities/user';
-import { FileSchema } from 'entities/file';
+import { ArticleDetailsSchema } from 'entities/article';
 import { CountriesSchema } from 'entities/countries';
 import { CitiesSchema } from 'entities/city';
+import { FileSchema } from 'entities/file';
+import { ProfileSchema } from 'entities/profile';
+import { UserSchema } from 'entities/user';
 
 import { LoginSchema } from 'features/loginByUsername';
 
@@ -16,6 +17,9 @@ export interface StateSchema {
     // Асинхронные редюсеры
     login?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsSchema;
+
+    // Переиспользуемые асинхронные редьюсеры
     file?: FileSchema;
     countries?: CountriesSchema;
     cities?: CitiesSchema;

@@ -1,4 +1,5 @@
 {
   "list": "Articles",
-  "details": "Article details"
+  "details": "Article details",
+  "not_found": "Article not found"
 }

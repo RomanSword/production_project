@@ -41,13 +41,12 @@ const element = (
 export const Light: Story = {
     args: {
         isLoading: true,
-        contentClassName: '',
         children: [element]
     },
     decorators: [themeLightDecorator]
 };
 
 export const Dark: Story = {
-    args: { isLoading: true, contentClassName: '', children: [element] },
+    args: { isLoading: true, children: [element] },
     decorators: [themeDarkDecorator]
 };

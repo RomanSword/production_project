@@ -14,7 +14,7 @@ export const AccessDeniedPage = (): ReactElement => {
     return (
         <div className={cls.accessDenied}>
             <TextBlock
-                type={TextBlockType.TITLE}
+                type={TextBlockType.TITLE_MAIN}
                 text={t('error.access_denied')}
             />
             <Button

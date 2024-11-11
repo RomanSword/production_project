@@ -5,7 +5,9 @@ import { classNames } from 'shared/lib';
 import cls from './textBlock.module.scss';
 
 export enum TextBlockType {
-    TITLE = 'title',
+    TITLE_MAIN = 'titleMain',
+    TITLE_ARTICLE = 'titleArticle',
+    IMAGE_TITLE = 'imageTitle',
     TEXT = 'text',
     ERROR = 'error'
 }

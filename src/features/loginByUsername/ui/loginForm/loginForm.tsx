@@ -58,7 +58,7 @@ const LoginForm = memo(function LoginForm(): ReactElement {
             >
                 <TextBlock
                     className={cls.formTitle}
-                    type={TextBlockType.TITLE}
+                    type={TextBlockType.TITLE_MAIN}
                     text={t('login_form_title')}
                 />
 

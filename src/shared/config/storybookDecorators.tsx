@@ -13,6 +13,7 @@ import { ReducerList } from 'shared/lib/components';
 
 import { fileReducer } from 'entities/file';
 import { profileReducer } from 'entities/profile';
+import { articleDetailsReducer } from 'entities/article';
 
 const i18n = initI18n();
 
@@ -67,6 +68,10 @@ export const themeLightDecorator = (Story: any) => {
     return themeDecoratorContent(Story, Theme.LIGHT);
 };
 
+export const themeCyberpunkDecorator = (Story: any) => {
+    return themeDecoratorContent(Story, Theme.CYBERPUNK);
+};
+
 export const themeDarkDecorator = (Story: any) => {
     return themeDecoratorContent(Story, Theme.DARK);
 };
@@ -74,7 +79,8 @@ export const themeDarkDecorator = (Story: any) => {
 const defaultAsyncReducers: ReducerList = {
     login: loginReducer,
     profile: profileReducer,
-    file: fileReducer
+    file: fileReducer,
+    articleDetails: articleDetailsReducer
 };
 
 export const storeDecorator = (

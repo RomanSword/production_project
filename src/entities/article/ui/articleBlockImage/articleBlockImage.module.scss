@@ -1,0 +1,17 @@
+.articleBlockImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.articleBlockImageItem {
+    width: 70%;
+    max-width: 800px;
+}
+
+.articleBlockImageTitle {
+    max-width: 800px;
+    opacity: 0.6;
+}

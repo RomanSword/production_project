@@ -6,8 +6,18 @@
     font-size: var(--font-size-m);
 }
 
-.title {
+.titleArticle {
+    font-weight: 600;
     font-size: var(--font-size-l);
+}
+
+.titleMain {
+    font-weight: 600;
+    font-size: var(--font-size-xl);
+}
+
+.imageTitle {
+    font-size: var(--font-size-s);
 }
 
 .alignLeft {
