@@ -11,11 +11,11 @@ import { Button } from '../button/button';
 import cls from './imageBlock.module.scss';
 
 export enum ImageBlockSize {
-    SMALL = 'small',
-    MEDIUM = 'medium',
-    LARGE = 'large',
-    XLARGE = 'xlarge',
-    FULL_WIDTH = 'fullWidth'
+    SMALL = 'small', // 40px
+    MEDIUM = 'medium', // 100px
+    LARGE = 'large', // 150px
+    XLARGE = 'xlarge', // 200px
+    FULL_WIDTH = 'fullWidth' // 100%
 }
 
 interface ImageBlockProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -23,6 +23,7 @@ interface ImageBlockProps extends ImgHTMLAttributes<HTMLImageElement> {
     isRound?: boolean;
     withPreview?: boolean;
     withLoadingImage?: boolean;
+    withBorder?: boolean;
     readonly?: boolean;
     onDelete?: () => void;
     className?: string;
@@ -36,6 +37,7 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
         isRound = false,
         withPreview = false,
         withLoadingImage = true,
+        withBorder = false,
         readonly = false,
         onDelete,
         className
@@ -55,8 +57,8 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
 
     return (
         <div
-            className={classNames([cls.container, isRound ? cls.containerRound : '', className])}
             data-size={size}
+            className={classNames([cls.container, className])}
         >
             {withLoadingImage &&
                 isLoading &&
@@ -93,13 +95,15 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
 
             {isActionsExists && (
                 <div className={cls.actionsContainer}>
-                    <Button
-                        data-testid='view-image-button'
-                        onClick={changeModalVisibility}
-                        className={cls.action}
-                    >
-                        <EyeIcon />
-                    </Button>
+                    {withPreview && (
+                        <Button
+                            data-testid='view-image-button'
+                            onClick={changeModalVisibility}
+                            className={cls.action}
+                        >
+                            <EyeIcon />
+                        </Button>
+                    )}
 
                     {!readonly && (
                         <Button
@@ -119,7 +123,11 @@ export const ImageBlock = memo(function ImageBlock(props: ImageBlockProps): Reac
                 loading='lazy'
                 ref={imageRef}
                 onLoad={onLoad}
-                className={classNames([cls.image, isRound ? cls.containerRound : ''])}
+                className={classNames([
+                    cls.image,
+                    isRound ? cls.containerRound : '',
+                    withBorder ? cls.containerBordered : ''
+                ])}
             />
         </div>
     );

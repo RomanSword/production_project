@@ -1,8 +1,8 @@
-import { useCallback, useEffect, ReactElement } from 'react';
+import { useCallback, ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { useAppDispatch } from 'shared/lib/hooks';
+import { useAppDispatch, useInitialEffect } from 'shared/lib/hooks';
 import { LoadingWrapper } from 'shared/ui';
 
 import {
@@ -43,21 +43,14 @@ const ProfilePage = (): ReactElement => {
     const isLoading = useSelector(getProfileIsLoading);
     const isEdited = useSelector(getProfileIsEdited);
 
-    useEffect(() => {
+    useInitialEffect(() => {
+        dispatch(fetchProfileData());
+    }, profileActions.cancelEdit);
+
+    const reloadFormData = useCallback(() => {
         if (__PROJECT__ !== 'storybook') {
             dispatch(fetchProfileData());
         }
-
-        profileActions.cancelEdit();
-
-        return () => {
-            profileActions.cancelEdit();
-        };
-    }, [dispatch]);
-
-    const reloadFormData = useCallback(() => {
-        dispatch(fetchProfileData());
-        profileActions.cancelEdit();
     }, [dispatch]);
 
     const startEdit = useCallback(() => {
@@ -109,24 +102,26 @@ const ProfilePage = (): ReactElement => {
                 onReload={reloadFormData}
                 className={cls.container}
             >
-                <ProfileFormHeader
-                    readonly={readonly}
-                    errors={validationErrors}
-                    isLoading={isLoading}
-                    isEdited={isEdited}
-                    startEdit={startEdit}
-                    applyEdit={applyEdit}
-                    cancelEdit={cancelEdit}
-                />
-                <ProfileFormBody
-                    formData={formData}
-                    errors={validationErrors}
-                    readonly={readonly}
-                    isLoading={isLoading}
-                    onChangeField={onChangeFormDataField}
-                    onChangeCountryField={onChangeCountryField}
-                    onChangeCityField={onChangeCityField}
-                />
+                <div className={cls.innerContainer}>
+                    <ProfileFormHeader
+                        readonly={readonly}
+                        errors={validationErrors}
+                        isLoading={isLoading}
+                        isEdited={isEdited}
+                        startEdit={startEdit}
+                        applyEdit={applyEdit}
+                        cancelEdit={cancelEdit}
+                    />
+                    <ProfileFormBody
+                        formData={formData}
+                        errors={validationErrors}
+                        readonly={readonly}
+                        isLoading={isLoading}
+                        onChangeField={onChangeFormDataField}
+                        onChangeCountryField={onChangeCountryField}
+                        onChangeCityField={onChangeCityField}
+                    />
+                </div>
             </LoadingWrapper>
         </DynamicModuleLoader>
     );

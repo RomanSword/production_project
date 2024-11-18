@@ -1,6 +1,13 @@
 .container {
+    width: 100%;
+}
+
+.innerContainer {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 430px;
+    max-width: 500px;
+    padding: 15px;
+    border-radius: 10px;
+    border: solid 1px var(--secondary-bg-color);
 }

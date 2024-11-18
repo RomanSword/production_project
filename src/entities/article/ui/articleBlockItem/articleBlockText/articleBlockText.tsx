@@ -1,4 +1,4 @@
-import { Fragment, memo } from 'react';
+import { Fragment, ReactElement, memo } from 'react';
 
 import { classNames } from 'shared/lib';
 import { TextBlock, TextBlockType } from 'shared/ui';
@@ -11,7 +11,9 @@ interface ArticleBlockTextProps {
     className?: string;
 }
 
-export const ArticleBlockText = memo((props: ArticleBlockTextProps) => {
+export const ArticleBlockText = memo(function ArticleBlockText(
+    props: ArticleBlockTextProps
+): ReactElement {
     const { paragraphs, title, className } = props;
 
     return (

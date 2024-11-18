@@ -1,4 +1,4 @@
-export const citiesData = [
+export const citiesMockData = [
     {
         id: '1',
         country_id: '1',

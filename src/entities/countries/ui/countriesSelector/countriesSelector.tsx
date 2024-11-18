@@ -1,9 +1,9 @@
-import { ReactElement, memo, useCallback, useEffect, useMemo } from 'react';
+import { ReactElement, memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components';
-import { useAppDispatch } from 'shared/lib/hooks';
+import { useAppDispatch, useInitialEffect } from 'shared/lib/hooks';
 import { Selector } from 'shared/ui';
 import { CountryChangeArgs } from 'shared/const/common';
 
@@ -35,11 +35,9 @@ export const CountriesSelector = memo(function CountriesSelector(
     const dispatch = useAppDispatch<any>();
     const { t, i18n } = useTranslation('form');
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchCountriesData());
-        }
-    }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(fetchCountriesData());
+    });
 
     const isLoading = useSelector(getCountriesIsLoading);
     const error = useSelector(getCountriesError);

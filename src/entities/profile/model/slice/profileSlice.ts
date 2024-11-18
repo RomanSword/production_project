@@ -72,7 +72,10 @@ export const profileSlice = createSlice({
         builder
             .addCase(fetchProfileData.pending, state => {
                 state.error = '';
+                state.readonly = true;
+                state.isEdited = false;
                 state.isLoading = true;
+                state.formData = { ...state.data };
             })
             .addCase(fetchProfileData.fulfilled, (state, action) => {
                 state.isLoading = false;

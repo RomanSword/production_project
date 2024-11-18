@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { ReactElement, memo } from 'react';
 
 import { classNames } from 'shared/lib';
 import { ImageBlock, ImageBlockSize, TextBlock, TextBlockAlign, TextBlockType } from 'shared/ui';
@@ -11,7 +11,9 @@ interface ArticleBlockImageProps {
     className?: string;
 }
 
-export const ArticleBlockImage = memo((props: ArticleBlockImageProps) => {
+export const ArticleBlockImage = memo(function ArticleBlockImage(
+    props: ArticleBlockImageProps
+): ReactElement {
     const { src, title, className } = props;
 
     return (
@@ -21,6 +23,7 @@ export const ArticleBlockImage = memo((props: ArticleBlockImageProps) => {
                     src={src}
                     size={ImageBlockSize.FULL_WIDTH}
                     readonly={true}
+                    withPreview={true}
                 />
             </div>
 

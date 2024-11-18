@@ -6,13 +6,13 @@ import {
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
 
-import ArticleDetailsPageAsync from './articleDetailsPage';
+import ArticleDetailsPage from './articleDetailsPage';
 
 const meta = {
     decorators: pageDecorators,
-    title: 'pages/ArticleDetailsPageAsync',
-    component: ArticleDetailsPageAsync
-} satisfies Meta<typeof ArticleDetailsPageAsync>;
+    title: 'pages/ArticleDetailsPage',
+    component: ArticleDetailsPage
+} satisfies Meta<typeof ArticleDetailsPage>;
 
 type Story = StoryObj<typeof meta>;
 

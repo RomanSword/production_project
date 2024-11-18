@@ -1,9 +1,9 @@
-import { ReactElement, memo, useCallback, useEffect, useMemo } from 'react';
+import { ReactElement, memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { DynamicModuleLoader, ReducerList } from 'shared/lib/components';
-import { useAppDispatch } from 'shared/lib/hooks';
+import { useAppDispatch, useInitialEffect } from 'shared/lib/hooks';
 import { Selector } from 'shared/ui';
 import { CityChangeArgs } from 'shared/const/common';
 
@@ -36,13 +36,11 @@ export const CitiesSelector = memo(function CitiesSelector(
     const dispatch = useAppDispatch<any>();
     const { t, i18n } = useTranslation('form');
 
-    useEffect(() => {
+    useInitialEffect(() => {
         if (countryId) {
-            if (__PROJECT__ !== 'storybook') {
-                dispatch(fetchCitiesData({ country_id: countryId }));
-            }
+            dispatch(fetchCitiesData({ country_id: countryId }));
         }
-    }, [dispatch, countryId]);
+    });
 
     const isLoading = useSelector(getCitiesIsLoading);
     const error = useSelector(getCitiesError);

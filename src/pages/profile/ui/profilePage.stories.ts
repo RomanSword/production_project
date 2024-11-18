@@ -7,7 +7,7 @@ import {
     themeDarkDecorator,
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
-import { profileData } from 'shared/mocks/api';
+import { profileMockData } from 'shared/mocks/api';
 
 import ProfilePage from './profilePage';
 
@@ -27,8 +27,8 @@ const store = {
         error: '',
         isEdited: false,
         readonly: true,
-        data: { ...profileData },
-        formData: { ...profileData }
+        data: { ...profileMockData },
+        formData: { ...profileMockData }
     }
 };
 

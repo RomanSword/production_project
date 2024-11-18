@@ -11,6 +11,8 @@ import { UserSchema } from 'entities/user';
 
 import { LoginSchema } from 'features/loginByUsername';
 
+import { ArticleDetailsCommentsSchema } from 'pages/articleDetails';
+
 export interface StateSchema {
     user?: UserSchema;
 
@@ -18,6 +20,7 @@ export interface StateSchema {
     login?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;
+    articleDetailsComments?: ArticleDetailsCommentsSchema;
 
     // Переиспользуемые асинхронные редьюсеры
     file?: FileSchema;

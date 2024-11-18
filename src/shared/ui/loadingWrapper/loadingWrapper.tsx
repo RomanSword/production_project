@@ -38,7 +38,7 @@ export const LoadingWrapper: FCCP<LoadingWrapperProps> = (props): ReactElement =
                 <div className={cls.errorInnerBlock}>
                     <span className={cls.error}>
                         <TextBlock
-                            type={TextBlockType.TITLE_MAIN}
+                            type={TextBlockType.TEXT}
                             align={TextBlockAlign.CENTER}
                             text={`${t('error_while_loading')}:`}
                         />

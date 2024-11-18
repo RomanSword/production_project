@@ -1,12 +1,12 @@
 import { Article, ArticleBlockType, ArticleType } from 'entities/article/model/types/article';
 
-export const articleDetailsData: Article = {
+export const articleDetailsMockData: Article = {
     id: '1',
     title: 'Frostpunk 2: что нужно знать перед прохождением и стоит ли​ покупать',
     subtitle: 'Рассказываем о плюсах и минусах новинки',
     avatarSrc:
         'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-frostpunk2-qa.jpg?preset=image_1280w',
-    views: 2000,
+    views: '2000',
     createdAt: '30.04.2024',
     type: [ArticleType.GAMES, ArticleType.STRATEGY],
     blocks: [

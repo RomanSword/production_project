@@ -15,5 +15,7 @@
   "loading": "Loading",
   "login_form_title": "Login form",
   "no_image": "No image",
-  "unsaved_edit": "There are unsaved edit, continue?"
+  "unsaved_edit": "There are unsaved edit, continue?",
+  "comments": "Comments",
+  "empty_content": "It's empty here for now"
 }

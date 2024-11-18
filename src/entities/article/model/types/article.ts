@@ -43,7 +43,7 @@ export interface Article {
     title?: string;
     subtitle?: string;
     avatarSrc?: string;
-    views?: number;
+    views?: string;
     createdAt?: string;
     type?: ArticleType[];
     blocks?: ArticleBlock[];

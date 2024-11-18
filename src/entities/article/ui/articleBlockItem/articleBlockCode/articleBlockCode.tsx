@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { ReactElement, memo, useCallback } from 'react';
 
 import { classNames } from 'shared/lib';
 import CopyIcon from 'shared/assets/icons/copy.svg';
@@ -10,7 +10,10 @@ interface ArticleBlockCodeProps {
     className?: string;
 }
 
-export const ArticleBlockCode = memo(({ text, className }: ArticleBlockCodeProps) => {
+export const ArticleBlockCode = memo(function ArticleBlockCode({
+    text,
+    className
+}: ArticleBlockCodeProps): ReactElement {
     const copyToClipboard = useCallback((): void => {
         if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard.writeText(text);

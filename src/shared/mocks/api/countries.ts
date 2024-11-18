@@ -1,4 +1,4 @@
-export const countriesData = [
+export const countriesMockData = [
     {
         id: '1',
         name: {

@@ -8,6 +8,7 @@ export enum TextBlockType {
     TITLE_MAIN = 'titleMain',
     TITLE_ARTICLE = 'titleArticle',
     IMAGE_TITLE = 'imageTitle',
+    COMMENT_TITLE = 'commentTitle',
     TEXT = 'text',
     ERROR = 'error'
 }

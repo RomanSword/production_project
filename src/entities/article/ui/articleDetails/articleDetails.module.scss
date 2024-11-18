@@ -3,12 +3,8 @@
     flex-direction: column;
     gap: 70px;
     width: 100%;
-    min-height: 100%;
     max-width: 1300px;
     align-items: center;
-    border-radius: 10px;
-    border: solid 1px var(--secondary-bg-color);
-    overflow-x: auto;
 }
 
 .skeletonContainer {
@@ -20,28 +16,28 @@
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
+    position: relative;
     width: 100%;
+
+    &::after {
+        position: absolute;
+        left: 0;
+        bottom: -30px;
+        display: block;
+        content: '';
+        width: 60%;
+        height: 3px;
+        margin-right: 20%;
+        margin-left: 20%;
+        background-color: var(--secondary-bg-color);
+    }
 }
 
-.headerAvatar {
-    margin-bottom: 50px;
-}
-
-.info {
+.headerPanel {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.infoItem {
-    display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    gap: 10px;
 }
 
 .content {

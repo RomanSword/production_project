@@ -1,4 +1,5 @@
-export { articleDetailsData } from './articleDetails';
-export { citiesData } from './cities';
-export { countriesData } from './countries';
-export { profileData } from './profile';
+export { articleDetailsMockData } from './articleDetails';
+export { citiesMockData } from './cities';
+export { commentsMockData } from './comments';
+export { countriesMockData } from './countries';
+export { profileMockData } from './profile';

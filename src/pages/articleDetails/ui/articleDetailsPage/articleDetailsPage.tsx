@@ -2,7 +2,10 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 
 import { ArticleDetails } from 'entities/article';
+
 import { classNames } from 'shared/lib';
+
+import { ArticleComments } from '../articleComments/articleComments';
 
 import cls from './articleDetailsPage.module.scss';
 
@@ -21,8 +24,13 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     }
 
     return (
-        <div className={classNames([cls.articleDetailsPage, className])}>
+        <div className={classNames([cls.container, className])}>
             <ArticleDetails id={id} />
+
+            <ArticleComments
+                className={cls.footer}
+                articleId={id}
+            />
         </div>
     );
 };

@@ -1,4 +1,4 @@
-export const profileData = {
+export const profileMockData = {
     id: '1',
     username: 'admin',
     firstname: 'Роман',

@@ -8,7 +8,7 @@ import {
     themeDarkDecorator,
     themeLightDecorator
 } from 'shared/config/storybookDecorators';
-import { articleDetailsData } from 'shared/mocks/api';
+import { articleDetailsMockData } from 'shared/mocks/api';
 
 import { ArticleDetails } from './articleDetails';
 
@@ -26,7 +26,7 @@ const store = {
     articleDetails: {
         isLoading: false,
         error: '',
-        data: { ...articleDetailsData }
+        data: { ...articleDetailsMockData }
     }
 };
 
