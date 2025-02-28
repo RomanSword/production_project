@@ -1,4 +1,4 @@
-# FSD example project
+# Experimental project
 
 ### What interesting in this project
 - FSD architecture;
