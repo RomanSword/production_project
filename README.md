@@ -1,6 +1,7 @@
 # Experimental project
+- What about this project? Nothing special. In this repo i just try some interesting things from frontend. 
 
-### What interesting in this project
+### What interesting in frontend part of this project
 - FSD architecture;
 - TS, React, Redux, css-modules, code splitting for components and store slices;
 - Light and Dark themes;
