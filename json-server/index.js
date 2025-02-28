@@ -54,36 +54,36 @@ server.use((req, res, next) => {
 
 server.post('/login', (req, res) => {
     const { username } = req.body;
-    const { users } = db;
+    const { profiles } = db;
 
-    const user = users.find(item => item.username === username);
+    const profile = profiles.find(item => item.username === username);
 
-    if (user) {
-        delete user.password;
+    if (profile) {
+        delete profile.password;
 
-        return res.json(user);
+        return res.json(profile);
     }
 
     return res.status(403).json({ message: 'request_payload_data_is_incorrect' });
 });
 
 server.get('/profile', (req, res) => {
-    const user = db.users[0];
+    const profile = db.profiles[0];
 
-    delete user.password;
+    delete profile.password;
 
-    user.country = db.countries.find(item => item.id === user.country_id);
-    user.city = db.cities.find(item => item.id === user.city_id);
+    profile.country = db.countries.find(item => item.id === profile.country_id);
+    profile.city = db.cities.find(item => item.id === profile.city_id);
 
     return setTimeout(() => {
-        return res.json(user);
+        return res.json(profile);
     }, 1000);
 });
 
 server.put('/profile', (req, res) => {
     const form = req.body;
 
-    db.users = db.users.map(item => {
+    db.profiles = db.profiles.map(item => {
         if (item.id === form.id) {
             return {
                 ...item,
@@ -98,6 +98,36 @@ server.put('/profile', (req, res) => {
 
     form.country = db.countries.find(item => item.id === form.country_id);
     form.city = db.cities.find(item => item.id === form.city_id);
+
+    return setTimeout(() => {
+        return res.json(form);
+    }, 2000);
+});
+
+server.post('/comments', (req, res) => {
+    const form = {
+        id: String(db.comments.length + 1),
+        text: req.body.text,
+        articleId: req.body.articleId,
+        profileId: req.headers.authorization.replace('Bearer ', '')
+    };
+
+    if (req.body.id) {
+        db.comments = db.comments.map(item => {
+            if (item.id === form.id) {
+                return {
+                    ...item,
+                    ...form
+                };
+            }
+
+            return item;
+        });
+    } else {
+        db.comments.push(form);
+    }
+
+    fs.writeFileSync(dbFilePath, JSON.stringify(db));
 
     return setTimeout(() => {
         return res.json(form);

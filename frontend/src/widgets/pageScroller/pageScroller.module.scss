@@ -1,0 +1,12 @@
+.pageScroller {
+    position: fixed;
+    bottom: 10px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toggleButton {
+    height: 40px;
+}

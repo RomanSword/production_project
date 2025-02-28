@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.name {
+    font-size: var(--font-size-m);
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.label {
+    opacity: 0.5;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.text {
+    width: 100%;
+}

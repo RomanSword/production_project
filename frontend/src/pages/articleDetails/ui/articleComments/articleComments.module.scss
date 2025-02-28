@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    gap: 30px;
+
+    &::after {
+        position: absolute;
+        top: -30px;
+        left: 0;
+        display: block;
+        content: '';
+        width: 60%;
+        height: 3px;
+        margin-right: 20%;
+        margin-left: 20%;
+        background-color: var(--secondary-bg-color);
+    }
+}

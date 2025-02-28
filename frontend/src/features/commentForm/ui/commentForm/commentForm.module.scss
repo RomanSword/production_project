@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.textField {
+    flex: 1;
+}
+
+.button {
+    width: 130px;
+    height: 46px;
+}
